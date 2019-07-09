@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- margins-->
+    <dimen name="common_half_margin">8dp</dimen>
+
+    <!-- paddings -->
+    <dimen name="common_padding">16dp</dimen>
+</resources>
