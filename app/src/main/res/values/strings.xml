@@ -15,4 +15,7 @@
     <!-- actions -->
     <string name="action_options">Options</string>
     <string name="action_reset">Reset</string>
+
+    <!-- messages-->
+    <string name="message_empty_data">-</string>
 </resources>
