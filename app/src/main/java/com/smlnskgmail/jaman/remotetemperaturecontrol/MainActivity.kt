@@ -2,18 +2,26 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.smlnskgmail.jaman.remotetemperaturecontrol.connections.MonitorBluetoothConnection
-import com.smlnskgmail.jaman.remotetemperaturecontrol.data.SignalCallback
-import com.smlnskgmail.jaman.remotetemperaturecontrol.data.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist.BtDevicesBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.connection.MonitorBluetoothConnection
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalCallback
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), SignalCallback {
+class MainActivity : AppCompatActivity(),
+    SignalCallback {
 
     private lateinit var monitorBluetoothConnection: MonitorBluetoothConnection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        showDevicesList()
+    }
+
+    private fun showDevicesList() {
+        val devicesBottomSheet = BtDevicesBottomSheet()
+        devicesBottomSheet.show(supportFragmentManager, BtDevicesBottomSheet::class.java.name)
     }
 
     override fun onDataAvailable(signalType: SignalType, data: String) {

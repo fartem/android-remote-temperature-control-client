@@ -1,0 +1,3 @@
+package com.smlnskgmail.jaman.remotetemperaturecontrol.components.dialogs
+
+class AppAlertDialog

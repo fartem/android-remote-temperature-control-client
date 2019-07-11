@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.data
+package com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal
 
 interface SignalCallback {
 

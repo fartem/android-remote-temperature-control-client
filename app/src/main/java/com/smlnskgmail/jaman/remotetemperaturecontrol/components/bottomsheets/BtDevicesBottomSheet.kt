@@ -1,3 +1,0 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets
-
-class BtDevicesBottomSheet

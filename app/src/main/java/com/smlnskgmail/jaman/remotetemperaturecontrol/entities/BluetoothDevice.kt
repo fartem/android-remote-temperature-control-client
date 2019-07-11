@@ -1,0 +1,3 @@
+package com.smlnskgmail.jaman.remotetemperaturecontrol.entities
+
+class BluetoothDevice

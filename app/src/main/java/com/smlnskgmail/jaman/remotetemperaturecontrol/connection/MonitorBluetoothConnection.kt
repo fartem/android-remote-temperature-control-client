@@ -1,16 +1,17 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.connections
+package com.smlnskgmail.jaman.remotetemperaturecontrol.connection
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
-import com.smlnskgmail.jaman.remotetemperaturecontrol.data.SignalCallback
-import com.smlnskgmail.jaman.remotetemperaturecontrol.data.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalCallback
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
 import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
 
 class MonitorBluetoothConnection(bluetoothAdapter: BluetoothAdapter,
                                  systemBluetoothMacAddress: String,
-                                 private val signalCallback: SignalCallback) : Thread() {
+                                 private val signalCallback: SignalCallback
+) : Thread() {
 
     private val BLUETOOTH_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
