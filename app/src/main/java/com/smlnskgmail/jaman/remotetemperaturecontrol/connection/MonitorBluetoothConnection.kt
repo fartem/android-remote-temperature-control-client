@@ -9,7 +9,7 @@ import java.io.OutputStream
 import java.util.*
 
 class MonitorBluetoothConnection(bluetoothAdapter: BluetoothAdapter,
-                                 systemBluetoothMacAddress: String,
+                                 deviceMacAddress: String,
                                  private val signalCallback: SignalCallback
 ) : Thread() {
 
@@ -28,19 +28,21 @@ class MonitorBluetoothConnection(bluetoothAdapter: BluetoothAdapter,
     private lateinit var outputStream: OutputStream
 
     init {
-        val bluetoothDevice = bluetoothAdapter.getRemoteDevice(systemBluetoothMacAddress)
+        val bluetoothDevice = bluetoothAdapter.getRemoteDevice(deviceMacAddress)
         bluetoothSocket = bluetoothDevice.createRfcommSocketToServiceRecord(BLUETOOTH_UUID)
     }
 
     override fun run() {
-
+        while (true) {
+            read()
+        }
     }
 
     fun send(data: String) {
         outputStream.write(data.toByteArray())
     }
 
-    fun read() {
+    private fun read() {
         val data = inputStream.read()
         signalCallback.onDataAvailable(SignalType.Reset, "")
     }

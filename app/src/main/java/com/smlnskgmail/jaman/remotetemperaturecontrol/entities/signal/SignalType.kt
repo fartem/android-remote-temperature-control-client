@@ -6,7 +6,7 @@ enum class SignalType {
     TemperatureMaximum,
     TemperatureMinimum,
     Humidity,
-    HimidityMaximum,
+    HumidityMaximum,
     HumidityMinimum,
     Reset;
 

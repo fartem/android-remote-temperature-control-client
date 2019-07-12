@@ -15,6 +15,7 @@
     <!-- actions -->
     <string name="action_options">Options</string>
     <string name="action_reset">Reset</string>
+    <string name="action_connect">Connect</string>
 
     <!-- messages-->
     <string name="message_empty_data">-</string>
