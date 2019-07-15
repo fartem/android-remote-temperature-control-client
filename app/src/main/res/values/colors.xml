@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!-- Configured palette: https://www.materialpalette.com/amber/light-blue-->
+    <color name="colorPrimary">#ffc107</color>
+    <color name="colorPrimaryDark">#ffa000</color>
+    <color name="colorAccent">#03a9f4</color>
+
+    <!-- Text -->
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
 </resources>

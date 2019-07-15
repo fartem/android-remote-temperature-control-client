@@ -142,13 +142,13 @@
 
             <TextView
                     android:id="@+id/tv_connected_device_title"
-                    style="@style/InfoText"
+                    style="@style/Title"
                     android:layout_weight="1"
                     android:text="@string/title_connected_device"/>
 
             <TextView
                     android:id="@+id/tv_connected_device_info"
-                    style="@style/InfoText"
+                    style="@style/Title"
                     android:layout_weight="1"
                     android:gravity="end"
                     tools:text="-"/>
