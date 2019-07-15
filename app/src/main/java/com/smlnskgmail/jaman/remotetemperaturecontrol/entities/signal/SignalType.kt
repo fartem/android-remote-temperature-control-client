@@ -1,13 +1,13 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal
 
-enum class SignalType {
+enum class SignalType(val signal: String) {
 
-    Temperature,
-    TemperatureMaximum,
-    TemperatureMinimum,
-    Humidity,
-    HumidityMaximum,
-    HumidityMinimum,
-    Reset;
+    Temperature("t"),
+    TemperatureMaximum("m"),
+    TemperatureMinimum("i"),
+    Humidity("h"),
+    HumidityMaximum("w"),
+    HumidityMinimum("q"),
+    Reset("r");
 
 }

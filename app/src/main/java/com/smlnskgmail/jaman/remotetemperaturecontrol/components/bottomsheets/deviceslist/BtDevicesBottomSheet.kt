@@ -4,7 +4,6 @@ import android.bluetooth.BluetoothAdapter
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist.list.DevicesAdapter
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.listeners.OnBluetoothDeviceSelected
 import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.BluetoothDevice
 import kotlinx.android.synthetic.main.bottom_sheet_bluetooth_devices.*
 

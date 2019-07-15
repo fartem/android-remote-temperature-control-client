@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.listeners
+package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist
 
 interface OnBluetoothDeviceSelected {
 
