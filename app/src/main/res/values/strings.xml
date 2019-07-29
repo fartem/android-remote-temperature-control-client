@@ -1,22 +1,22 @@
 <resources>
     <string name="app_name">Remote Temperature Control</string>
 
-    <!-- titles -->
+    <!-- Titles -->
     <string name="title_temperature">Temperature</string>
     <string name="title_humidity">Humidity</string>
     <string name="title_connected_device">Connected device:</string>
 
-    <!-- info -->
+    <!-- Info -->
     <string name="info_temperature_minimum_title">Minimum:</string>
     <string name="info_temperature_maximum_title">Maximum</string>
     <string name="info_humidity_minimum_title">Minimum:</string>
     <string name="info_humidity_maximum_title">Maximum</string>
 
-    <!-- actions -->
+    <!-- Actions -->
     <string name="action_options">Options</string>
     <string name="action_reset">Reset</string>
     <string name="action_connect">Connect</string>
 
-    <!-- messages-->
+    <!-- Messages -->
     <string name="message_empty_data">-</string>
 </resources>

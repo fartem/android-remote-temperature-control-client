@@ -16,13 +16,13 @@
 
             <TextView
                     android:id="@+id/tv_temperature_title"
-                    style="@style/Title"
+                    style="@style/AppTitleText"
                     android:layout_weight="1"
                     android:text="@string/title_temperature"/>
 
             <TextView
                     android:id="@+id/tv_temperature_value"
-                    style="@style/Title"
+                    style="@style/AppTitleText"
                     android:layout_marginStart="@dimen/common_half_margin"
                     tools:text="23.4 C"/>
 
@@ -38,13 +38,13 @@
 
                 <TextView
                         android:id="@+id/tv_temperature_min_title"
-                        style="@style/InfoText"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:text="@string/info_temperature_minimum_title"/>
 
                 <TextView
                         android:id="@+id/tv_temperature_min_value"
-                        style="@style/InfoText"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:gravity="end"
                         tools:text="22.0 C"/>
@@ -80,13 +80,13 @@
 
             <TextView
                     android:id="@+id/tv_humidity_title"
-                    style="@style/Title"
+                    style="@style/AppTitleText"
                     android:layout_weight="1"
                     android:text="@string/title_humidity"/>
 
             <TextView
                     android:id="@+id/tv_humidity_value"
-                    style="@style/Title"
+                    style="@style/AppTitleText"
                     android:layout_marginStart="8dp"
                     tools:text="57%"/>
 
@@ -102,13 +102,13 @@
 
                 <TextView
                         android:id="@+id/tv_humidity_min_title"
-                        style="@style/InfoText"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:text="@string/info_humidity_minimum_title"/>
 
                 <TextView
                         android:id="@+id/tv_humidity_min_value"
-                        style="@style/InfoText"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:gravity="end"
                         tools:text="51%"/>
@@ -120,13 +120,13 @@
 
                 <TextView
                         android:id="@+id/tv_humidity_max_title"
-                        style="@style/InfoText"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:text="@string/info_humidity_maximum_title"/>
 
                 <TextView
                         android:id="@+id/tv_humidity_max_value"
-                        style="@style/InfoText"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:gravity="end"
                         tools:text="75%"/>
@@ -142,13 +142,13 @@
 
             <TextView
                     android:id="@+id/tv_connected_device_title"
-                    style="@style/Title"
+                    style="@style/AppTitleText"
                     android:layout_weight="1"
                     android:text="@string/title_connected_device"/>
 
             <TextView
                     android:id="@+id/tv_connected_device_info"
-                    style="@style/Title"
+                    style="@style/AppTitleText"
                     android:layout_weight="1"
                     android:gravity="end"
                     tools:text="-"/>
@@ -159,13 +159,13 @@
 
     <Button
             android:id="@+id/btn_main_options"
-            style="@style/ControlButton"
+            style="@style/AppButton"
             android:layout_gravity="bottom|start"
             android:text="@string/action_options"/>
 
     <Button
             android:id="@+id/btn_reset_monitor"
-            style="@style/ControlButton"
+            style="@style/AppButton"
             android:layout_gravity="bottom|end"
             android:text="@string/action_reset"/>
 

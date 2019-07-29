@@ -8,24 +8,33 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Title">
+    <style name="AppTitleText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-    <style name="InfoText">
+    <style name="AppInfoText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_size_standard</item>
         <item name="android:textColor">@color/colorSecondaryText</item>
     </style>
 
-    <style name="ControlButton">
+    <style name="AppSelectableText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/common_padding</item>
+        <item name="android:foreground">?selectableItemBackground</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>

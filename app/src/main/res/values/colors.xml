@@ -4,6 +4,7 @@
     <color name="colorPrimary">#ffc107</color>
     <color name="colorPrimaryDark">#ffa000</color>
     <color name="colorAccent">#03a9f4</color>
+    <color name="ic_launcher_background">#03A9F4</color>
 
     <!-- Text -->
     <color name="colorPrimaryText">#212121</color>

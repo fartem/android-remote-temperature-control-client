@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- margins-->
+    <!-- Margin -->
     <dimen name="common_half_margin">8dp</dimen>
 
-    <!-- paddings -->
+    <!-- Padding -->
     <dimen name="common_padding">16dp</dimen>
+
+    <!-- Text -->
+    <dimen name="text_size_standard">16sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
 </resources>
