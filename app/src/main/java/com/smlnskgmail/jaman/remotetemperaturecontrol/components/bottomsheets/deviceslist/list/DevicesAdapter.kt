@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.BluetoothDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.bluetooth.BluetoothDevice
 
 class DevicesAdapter(private val bluetoothDevices: List<BluetoothDevice>)
     : RecyclerView.Adapter<DeviceHolder>() {

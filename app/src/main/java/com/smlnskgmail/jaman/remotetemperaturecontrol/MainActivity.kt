@@ -1,7 +1,9 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol
 
+import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist.BtDevicesBottomSheet
@@ -23,9 +25,12 @@ class MainActivity : AppCompatActivity(), SignalCallback,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        initializeBluetoothTools()
         showDevicesList()
+    }
+
+    private fun initializeBluetoothTools() {
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
     }
 
     private fun showDevicesList() {
@@ -40,6 +45,7 @@ class MainActivity : AppCompatActivity(), SignalCallback,
         monitorBluetoothConnection = MonitorBluetoothConnection(bluetoothAdapter, address, this)
         monitorBluetoothConnection.connect()
         monitorBluetoothConnection.start()
+        initializeButtons()
     }
 
     override fun onDataAvailable(signalType: SignalType, data: String) {
@@ -63,7 +69,7 @@ class MainActivity : AppCompatActivity(), SignalCallback,
                 SignalType.HumidityMinimum -> {
                     setHumidityMinimum(data)
                 }
-                SignalType.Reset -> {
+                else -> {
                     resetData()
                 }
             }
@@ -71,30 +77,43 @@ class MainActivity : AppCompatActivity(), SignalCallback,
     }
 
     private fun setTemperature(value: String) {
-        tv_temperature_value.text = value
+        setTemperatureValue(tv_temperature_value, value)
     }
 
     private fun setTemperatureMaximum(value: String) {
-        tv_temperature_max_value.text = value
+        setTemperatureValue(tv_temperature_max_value, value)
     }
 
     private fun setTemperatureMinimum(value: String) {
-        tv_temperature_min_value.text = value
+        setTemperatureValue(tv_temperature_min_value, value)
+    }
+
+    private fun setTemperatureValue(textView: TextView, value: String) {
+        setValue(textView, value, "C")
     }
 
     private fun setHumidity(value: String) {
-        tv_humidity_value.text = value
+        setHumidityValue(tv_humidity_value, value)
     }
 
     private fun setHumidityMaximum(value: String) {
-        tv_humidity_max_value.text = value
+        setHumidityValue(tv_humidity_max_value, value)
     }
 
     private fun setHumidityMinimum(value: String) {
-        tv_humidity_min_value.text = value
+        setHumidityValue(tv_humidity_min_value, value)
     }
 
-    private fun configureActions() {
+    private fun setHumidityValue(textView: TextView, value: String) {
+        setValue(textView, value, "%")
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setValue(textView: TextView, value: String, parameter: String) {
+        textView.text = "$value $parameter"
+    }
+
+    private fun initializeButtons() {
         btn_reset_monitor.setOnClickListener {
             monitorBluetoothConnection.send(SignalType.Reset)
         }

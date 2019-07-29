@@ -20,6 +20,7 @@ class MonitorBluetoothConnection(
     private val BLUETOOTH_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
     private var bluetoothSocket: BluetoothSocket
+
     private lateinit var inputStream: InputStream
     private lateinit var outputStream: OutputStream
 
@@ -39,9 +40,10 @@ class MonitorBluetoothConnection(
     }
 
     private fun read() {
-        val data = inputStream.read()
-        signalCallback.onDataAvailable(SignalType.Reset,
-            DataParser.parseResponse(data))
+        val rawData = inputStream.bufferedReader().readLine()
+        val signalType = DataParser.getSignalType(rawData)
+        val data = DataParser.getData(rawData)
+        signalCallback.onDataAvailable(signalType, data)
     }
 
     fun connect() {

@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.d
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.BluetoothDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.bluetooth.BluetoothDevice
 import kotlinx.android.synthetic.main.item_bluetooth_device.view.*
 
 class DeviceHolder(itemView: View, private val recyclerAdapter: DevicesAdapter)
