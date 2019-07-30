@@ -1,7 +1,7 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist
 
-interface OnBluetoothDeviceSelected {
+interface OnConnectionSetup {
 
-    fun onBluetoothDeviceSelect(address: String)
+    fun onConnectionSetup(name: String, address: String)
 
 }

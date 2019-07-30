@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.connection.utils
+package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.utils
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
 

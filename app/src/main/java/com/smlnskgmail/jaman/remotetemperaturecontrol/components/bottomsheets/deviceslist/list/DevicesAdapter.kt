@@ -10,6 +10,7 @@ class DevicesAdapter(private val bluetoothDevices: List<BluetoothDevice>)
     : RecyclerView.Adapter<DeviceHolder>() {
 
     private var selectedDeviceMacAddress: String = ""
+    private var selectedDeviceName: String = ""
 
     override fun onBindViewHolder(holder: DeviceHolder, position: Int) {
         holder.bind(bluetoothDevices[position])
@@ -19,11 +20,14 @@ class DevicesAdapter(private val bluetoothDevices: List<BluetoothDevice>)
         bluetoothDevices.forEach {
             it.isSelected = bluetoothDevice == it
             if (bluetoothDevice.isSelected) {
+                selectedDeviceName = bluetoothDevice.name
                 selectedDeviceMacAddress = bluetoothDevice.address
             }
         }
         notifyDataSetChanged()
     }
+
+    fun getSelectedDeviceName() = selectedDeviceName
 
     fun getSelectedDeviceMacAddress() = selectedDeviceMacAddress
 
