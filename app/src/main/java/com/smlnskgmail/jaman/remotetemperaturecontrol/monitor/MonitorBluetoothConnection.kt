@@ -24,26 +24,33 @@ class MonitorBluetoothConnection(
     private lateinit var inputStream: InputStream
     private lateinit var outputStream: OutputStream
 
+    private var isRunning = false
+
     init {
         val bluetoothDevice = bluetoothAdapter.getRemoteDevice(deviceMacAddress)
         bluetoothSocket = bluetoothDevice.createRfcommSocketToServiceRecord(BLUETOOTH_UUID)
     }
 
     override fun run() {
-        while (true) {
+        runRead()
+        while (canRead()) {
             read()
         }
     }
 
-    fun send(signalType: SignalType) {
-        outputStream.write(signalType.signal.toByteArray())
+    private fun read() {
+        if (inputStreamIsOpen()) {
+            val rawData = inputStream.bufferedReader().readLine()
+            val signalType = DataParser.getSignalType(rawData)
+            val data = DataParser.getData(rawData)
+            signalCallback.onDataAvailable(signalType, data)
+        }
     }
 
-    private fun read() {
-        val rawData = inputStream.bufferedReader().readLine()
-        val signalType = DataParser.getSignalType(rawData)
-        val data = DataParser.getData(rawData)
-        signalCallback.onDataAvailable(signalType, data)
+    private fun inputStreamIsOpen() = inputStream.bufferedReader().ready()
+
+    fun send(signalType: SignalType) {
+        outputStream.write(signalType.signal.toByteArray())
     }
 
     fun connect() {
@@ -56,8 +63,17 @@ class MonitorBluetoothConnection(
 
     fun disconnect() {
         if (bluetoothSocket.isConnected) {
+            isRunning = false
             bluetoothSocket.close()
+            inputStream.close()
+            outputStream.close()
         }
     }
+
+    private fun runRead() {
+        isRunning = true
+    }
+
+    private fun canRead() = isRunning
 
 }

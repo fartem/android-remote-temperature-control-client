@@ -1,11 +1,11 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
 
 abstract class BaseFragment : Fragment() {
 

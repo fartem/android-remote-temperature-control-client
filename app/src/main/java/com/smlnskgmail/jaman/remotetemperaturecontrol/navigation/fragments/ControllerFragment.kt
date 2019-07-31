@@ -1,21 +1,21 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments
 
 import android.bluetooth.BluetoothAdapter
 import android.view.View
 import android.widget.TextView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist.BtDevicesBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist.OnConnectionSetup
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.settings.OnDisconnectListener
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.settings.SettingsBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorBluetoothConnection
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller.ControllerSupport
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller.TemperatureDataController
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.BtDevicesBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.OnConnectionSetup
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.OnDisconnectListener
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.SettingsBottomSheet
 import kotlinx.android.synthetic.main.fragment_contriller.*
 
-class ControllerFragment : BaseFragment(), ControllerSupport,
-    OnConnectionSetup, OnDisconnectListener {
+class ControllerFragment : BaseFragment(), ControllerSupport, OnConnectionSetup,
+    OnDisconnectListener {
 
     private lateinit var monitorBluetoothConnection: MonitorBluetoothConnection
     private lateinit var bluetoothAdapter: BluetoothAdapter
@@ -25,12 +25,12 @@ class ControllerFragment : BaseFragment(), ControllerSupport,
     override fun initializeFragment(view: View) {
         temperatureDataController = TemperatureDataController(this)
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-
         showDevicesList()
     }
 
     private fun showDevicesList() {
-        val devicesBottomSheet = BtDevicesBottomSheet()
+        val devicesBottomSheet =
+            BtDevicesBottomSheet()
         devicesBottomSheet.setBluetoothAdapter(bluetoothAdapter)
         devicesBottomSheet.setBluetoothDeviceSelectCallback(this)
         devicesBottomSheet.isCancelable = false
@@ -62,7 +62,20 @@ class ControllerFragment : BaseFragment(), ControllerSupport,
     }
 
     override fun reset() {
-
+        activity!!.runOnUiThread {
+            val valueViews = listOf<TextView>(
+                tv_temperature_value,
+                tv_temperature_max_value,
+                tv_temperature_min_value,
+                tv_humidity_value,
+                tv_humidity_max_value,
+                tv_humidity_min_value
+            )
+            val defaultText = getString(R.string.default_parameter_value)
+            for (textView in valueViews) {
+                textView.text = defaultText
+            }
+        }
     }
 
     private fun setTextOnUIThread(textView: TextView, text: String) {
@@ -95,8 +108,10 @@ class ControllerFragment : BaseFragment(), ControllerSupport,
         }
     }
 
-    override fun onConnectionClosed() {
+    override fun closeConnection() {
         monitorBluetoothConnection.disconnect()
+        reset()
+        showDevicesList()
     }
 
     override fun getLayoutResId() = R.layout.fragment_contriller

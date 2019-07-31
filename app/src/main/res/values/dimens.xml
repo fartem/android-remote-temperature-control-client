@@ -2,6 +2,7 @@
 <resources>
     <!-- Margin -->
     <dimen name="common_half_margin">8dp</dimen>
+    <dimen name="common_margin">16dp</dimen>
 
     <!-- Padding -->
     <dimen name="common_padding">16dp</dimen>

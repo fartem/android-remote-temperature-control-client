@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist.list
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -32,8 +32,10 @@ class DevicesAdapter(private val bluetoothDevices: List<BluetoothDevice>)
     fun getSelectedDeviceMacAddress() = selectedDeviceMacAddress
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            = DeviceHolder(LayoutInflater.from(parent.context)
-        .inflate(R.layout.item_bluetooth_device, parent, false), this)
+            = DeviceHolder(
+        LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_bluetooth_device, parent, false), this
+    )
 
     override fun getItemCount() = bluetoothDevices.size
 

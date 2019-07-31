@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist
 
 interface OnConnectionSetup {
 

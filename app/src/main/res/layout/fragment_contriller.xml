@@ -11,12 +11,12 @@
             android:orientation="vertical">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                style="@style/AppParameterContainer">
 
             <TextView
                     android:id="@+id/tv_temperature_title"
                     style="@style/AppTitleText"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="@string/title_temperature"/>
 
@@ -24,17 +24,17 @@
                     android:id="@+id/tv_temperature_value"
                     style="@style/AppTitleText"
                     android:layout_marginStart="@dimen/common_half_margin"
+                    android:text="@string/default_parameter_value"
                     tools:text="23.4 C"/>
 
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/AppParameterContainer"
                 android:orientation="vertical">
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content">
+            <LinearLayout
+                    style="@style/AppParameterContainer">
 
                 <TextView
                         android:id="@+id/tv_temperature_min_title"
@@ -47,26 +47,26 @@
                         style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:gravity="end"
+                        android:text="@string/default_parameter_value"
                         tools:text="22.0 C"/>
 
             </LinearLayout>
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content">
+            <LinearLayout
+                    style="@style/AppParameterContainer">
 
                 <TextView
                         android:id="@+id/tv_temperature_max_title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:text="@string/info_temperature_maximum_title"/>
 
                 <TextView
                         android:id="@+id/tv_temperature_max_value"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:gravity="end"
+                        android:text="@string/default_parameter_value"
                         tools:text="27.9 C"/>
 
             </LinearLayout>
@@ -74,13 +74,13 @@
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                style="@style/AppParameterContainer"
+                android:layout_marginTop="@dimen/common_margin">
 
             <TextView
                     android:id="@+id/tv_humidity_title"
                     style="@style/AppTitleText"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="@string/title_humidity"/>
 
@@ -88,17 +88,17 @@
                     android:id="@+id/tv_humidity_value"
                     style="@style/AppTitleText"
                     android:layout_marginStart="8dp"
+                    android:text="@string/default_parameter_value"
                     tools:text="57%"/>
 
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/AppParameterContainer"
                 android:orientation="vertical">
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content">
+            <LinearLayout
+                    style="@style/AppParameterContainer">
 
                 <TextView
                         android:id="@+id/tv_humidity_min_title"
@@ -111,12 +111,13 @@
                         style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:gravity="end"
+                        android:text="@string/default_parameter_value"
                         tools:text="51%"/>
 
             </LinearLayout>
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content">
+            <LinearLayout
+                    style="@style/AppParameterContainer">
 
                 <TextView
                         android:id="@+id/tv_humidity_max_title"
@@ -129,6 +130,7 @@
                         style="@style/AppInfoText"
                         android:layout_weight="1"
                         android:gravity="end"
+                        android:text="@string/default_parameter_value"
                         tools:text="75%"/>
 
             </LinearLayout>
@@ -136,9 +138,8 @@
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
+                style="@style/AppParameterContainer"
+                android:layout_marginTop="@dimen/common_margin">
 
             <TextView
                     android:id="@+id/tv_connected_device_title"
@@ -151,7 +152,7 @@
                     style="@style/AppTitleText"
                     android:layout_weight="1"
                     android:gravity="end"
-                    tools:text="-"/>
+                    android:text="@string/default_parameter_value" />
 
         </LinearLayout>
 

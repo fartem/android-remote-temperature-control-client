@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.deviceslist.list
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.list
 
 import android.view.View
 import androidx.core.content.ContextCompat
