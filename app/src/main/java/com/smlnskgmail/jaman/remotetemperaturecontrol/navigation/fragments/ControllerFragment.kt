@@ -6,16 +6,16 @@ import android.widget.TextView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
 import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorBluetoothConnection
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller.ControllerSupport
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller.ControllerTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller.TemperatureDataController
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.BtDevicesBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.BluetoothDevicesBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.OnConnectionSetup
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.OnDisconnectListener
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.BluetoothDisconnectTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.SettingsBottomSheet
 import kotlinx.android.synthetic.main.fragment_contriller.*
 
-class ControllerFragment : BaseFragment(), ControllerSupport, OnConnectionSetup,
-    OnDisconnectListener {
+class ControllerFragment : BaseFragment(), ControllerTarget, OnConnectionSetup,
+    BluetoothDisconnectTarget {
 
     private lateinit var monitorBluetoothConnection: MonitorBluetoothConnection
     private lateinit var bluetoothAdapter: BluetoothAdapter
@@ -29,39 +29,38 @@ class ControllerFragment : BaseFragment(), ControllerSupport, OnConnectionSetup,
     }
 
     private fun showDevicesList() {
-        val devicesBottomSheet =
-            BtDevicesBottomSheet()
+        val devicesBottomSheet = BluetoothDevicesBottomSheet()
         devicesBottomSheet.setBluetoothAdapter(bluetoothAdapter)
         devicesBottomSheet.setBluetoothDeviceSelectCallback(this)
         devicesBottomSheet.isCancelable = false
         showBottomSheet(devicesBottomSheet)
     }
 
-    override fun newTemperature(result: String) {
-        setTextOnUIThread(tv_temperature_value, result)
+    override fun temperatureAvailable(data: String) {
+        setTextOnUIThread(tv_temperature_value, data)
     }
 
-    override fun newTemperatureMaximum(result: String) {
-        setTextOnUIThread(tv_temperature_max_value, result)
+    override fun temperatureMaximumAvailable(data: String) {
+        setTextOnUIThread(tv_temperature_max_value, data)
     }
 
-    override fun newTemperatureMinimum(result: String) {
-        setTextOnUIThread(tv_temperature_min_value, result)
+    override fun temperatureMinimumAvailable(data: String) {
+        setTextOnUIThread(tv_temperature_min_value, data)
     }
 
-    override fun newHumidity(result: String) {
-        setTextOnUIThread(tv_humidity_value, result)
+    override fun humidityAvailable(data: String) {
+        setTextOnUIThread(tv_humidity_value, data)
     }
 
-    override fun newHumidityMaximum(result: String) {
-        setTextOnUIThread(tv_humidity_max_value, result)
+    override fun humidityMaximumAvailable(data: String) {
+        setTextOnUIThread(tv_humidity_max_value, data)
     }
 
-    override fun newHumidityMinimum(result: String) {
-        setTextOnUIThread(tv_humidity_min_value, result)
+    override fun humidityMinimumAvailable(data: String) {
+        setTextOnUIThread(tv_humidity_min_value, data)
     }
 
-    override fun reset() {
+    override fun needReset() {
         activity!!.runOnUiThread {
             val valueViews = listOf<TextView>(
                 tv_temperature_value,
@@ -102,15 +101,19 @@ class ControllerFragment : BaseFragment(), ControllerSupport, OnConnectionSetup,
             monitorBluetoothConnection.send(SignalType.Reset)
         }
         btn_main_options.setOnClickListener {
-            val settingsBottomSheet = SettingsBottomSheet()
-            settingsBottomSheet.setBluetoothDisconnectListener(this)
-            showBottomSheet(settingsBottomSheet)
+            showSettings()
         }
     }
 
-    override fun closeConnection() {
+    private fun showSettings() {
+        val settingsBottomSheet = SettingsBottomSheet()
+        settingsBottomSheet.setBluetoothDisconnectListener(this)
+        showBottomSheet(settingsBottomSheet)
+    }
+
+    override fun disconnect() {
         monitorBluetoothConnection.disconnect()
-        reset()
+        needReset()
         showDevicesList()
     }
 

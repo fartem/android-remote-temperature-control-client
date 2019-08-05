@@ -1,7 +1,7 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings
 
-interface OnDisconnectListener {
+interface BluetoothDisconnectTarget {
 
-    fun closeConnection()
+    fun disconnect()
 
 }

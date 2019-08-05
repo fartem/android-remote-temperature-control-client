@@ -6,12 +6,12 @@ import kotlinx.android.synthetic.main.bottom_sheet_settings.*
 
 class SettingsBottomSheet : BaseBottomSheet() {
 
-    private var disconnectListener: OnDisconnectListener? = null
+    private var disconnectTarget: BluetoothDisconnectTarget? = null
 
     override fun initialize() {
         settings_disconnect.setOnClickListener {
             actionAndDismiss {
-                disconnectListener?.closeConnection()
+                disconnectTarget?.disconnect()
             }
         }
     }
@@ -21,8 +21,8 @@ class SettingsBottomSheet : BaseBottomSheet() {
         action()
     }
 
-    fun setBluetoothDisconnectListener(onDisconnectListener: OnDisconnectListener) {
-        this.disconnectListener = onDisconnectListener
+    fun setBluetoothDisconnectListener(disconnectTarget: BluetoothDisconnectTarget) {
+        this.disconnectTarget = disconnectTarget
     }
 
     override fun getLayoutResId() = R.layout.bottom_sheet_settings

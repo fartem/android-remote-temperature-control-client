@@ -1,14 +1,10 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller
 
 import android.annotation.SuppressLint
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalCallback
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
 
-class TemperatureDataController(
-
-    private val controllerSupport: ControllerSupport
-
-) : SignalCallback {
+class TemperatureDataController(private val controllerTarget: ControllerTarget) : SignalTarget {
 
     override fun onDataAvailable(signalType: SignalType, data: String) {
         when(signalType) {
@@ -31,41 +27,41 @@ class TemperatureDataController(
                 setHumidityMinimum(data)
             }
             else -> {
-                controllerSupport.reset()
+                controllerTarget.needReset()
             }
         }
     }
 
-    private fun setTemperature(value: String) {
-        controllerSupport.newTemperature(getTemperatureResult(value))
+    private fun setTemperature(data: String) {
+        controllerTarget.temperatureAvailable(getTemperatureResult(data))
     }
 
-    private fun setTemperatureMaximum(value: String) {
-        controllerSupport.newTemperatureMaximum(getTemperatureResult(value))
+    private fun setTemperatureMaximum(data: String) {
+        controllerTarget.temperatureMaximumAvailable(getTemperatureResult(data))
     }
 
-    private fun setTemperatureMinimum(value: String) {
-        controllerSupport.newTemperatureMinimum(getTemperatureResult(value))
+    private fun setTemperatureMinimum(data: String) {
+        controllerTarget.temperatureMinimumAvailable(getTemperatureResult(data))
     }
 
-    private fun getTemperatureResult(value: String)
-            = getFormattedResult(value, "C")
+    private fun getTemperatureResult(data: String)
+            = getFormattedResult(data, "C")
 
-    private fun setHumidity(value: String) {
-        controllerSupport.newHumidity(getHumidityResult(value))
+    private fun setHumidity(data: String) {
+        controllerTarget.humidityAvailable(getHumidityResult(data))
     }
 
-    private fun setHumidityMaximum(value: String) {
-        controllerSupport.newHumidityMaximum(getHumidityResult(value))
+    private fun setHumidityMaximum(data: String) {
+        controllerTarget.humidityMaximumAvailable(getHumidityResult(data))
     }
 
-    private fun setHumidityMinimum(value: String) {
-        controllerSupport.newHumidityMinimum(getHumidityResult(value))
+    private fun setHumidityMinimum(data: String) {
+        controllerTarget.humidityMinimumAvailable(getHumidityResult(data))
     }
 
-    private fun getHumidityResult(value: String) = getFormattedResult(value, "%")
+    private fun getHumidityResult(data: String) = getFormattedResult(data, "%")
 
     @SuppressLint("SetTextI18n")
-    private fun getFormattedResult(value: String, parameter: String) = "$value $parameter"
+    private fun getFormattedResult(data: String, measure: String) = "$data $measure"
 
 }

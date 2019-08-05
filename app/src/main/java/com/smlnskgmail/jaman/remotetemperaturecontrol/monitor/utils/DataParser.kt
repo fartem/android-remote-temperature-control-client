@@ -8,8 +8,7 @@ object DataParser {
         if (rawData.isEmpty()) {
             return SignalType.Nothing
         }
-        val controlSymbol = rawData[0].toString()
-        return when (controlSymbol) {
+        return when (rawData[0].toString()) {
             SignalType.Temperature.signal -> SignalType.Temperature
             SignalType.TemperatureMaximum.signal -> SignalType.TemperatureMaximum
             SignalType.TemperatureMinimum.signal -> SignalType.TemperatureMinimum
@@ -22,7 +21,7 @@ object DataParser {
 
     fun getData(rawData: String): String {
         if (rawData.isEmpty()) {
-            return "";
+            return ""
         }
         return rawData.substring(1)
     }

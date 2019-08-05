@@ -1,6 +1,6 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal
 
-interface SignalCallback {
+interface SignalTarget {
 
     fun onDataAvailable(signalType: SignalType, data: String)
 

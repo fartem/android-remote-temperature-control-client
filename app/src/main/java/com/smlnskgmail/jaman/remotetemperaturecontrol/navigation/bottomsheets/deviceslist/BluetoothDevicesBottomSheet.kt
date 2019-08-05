@@ -7,17 +7,14 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.Ba
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.list.DevicesAdapter
 import kotlinx.android.synthetic.main.bottom_sheet_bluetooth_devices.*
 
-class BtDevicesBottomSheet : BaseBottomSheet() {
+class BluetoothDevicesBottomSheet : BaseBottomSheet() {
 
     private var bluetoothDeviceSelectListener: OnConnectionSetup? = null
 
     private var bluetoothAdapter: BluetoothAdapter? = null
 
     override fun initialize() {
-        devices.adapter =
-            DevicesAdapter(
-                getBluetoothDevices()
-            )
+        devices.adapter = DevicesAdapter(getBluetoothDevices())
         select_device.setOnClickListener {
             val adapter = (devices.adapter as DevicesAdapter)
             bluetoothDeviceSelectListener?.onConnectionSetup(
@@ -32,12 +29,7 @@ class BtDevicesBottomSheet : BaseBottomSheet() {
         if (bondedDevices.isNotEmpty()) {
             val devices = arrayListOf<BluetoothDevice>()
             for (bondedDevice in bondedDevices) {
-                devices.add(
-                    BluetoothDevice(
-                        bondedDevice.name,
-                        bondedDevice.address
-                    )
-                )
+                devices.add(BluetoothDevice(bondedDevice.name, bondedDevice.address))
             }
             return devices
         }

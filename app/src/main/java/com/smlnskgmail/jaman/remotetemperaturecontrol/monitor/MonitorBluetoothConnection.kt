@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalCallback
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.utils.DataParser
 import java.io.InputStream
@@ -13,7 +13,7 @@ class MonitorBluetoothConnection(
 
     bluetoothAdapter: BluetoothAdapter,
     deviceMacAddress: String,
-    private val signalCallback: SignalCallback
+    private val signalTarget: SignalTarget
 
 ) : Thread() {
 
@@ -43,7 +43,7 @@ class MonitorBluetoothConnection(
             val rawData = inputStream.bufferedReader().readLine()
             val signalType = DataParser.getSignalType(rawData)
             val data = DataParser.getData(rawData)
-            signalCallback.onDataAvailable(signalType, data)
+            signalTarget.onDataAvailable(signalType, data)
         }
     }
 
