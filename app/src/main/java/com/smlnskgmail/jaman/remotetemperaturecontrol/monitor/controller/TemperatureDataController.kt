@@ -1,8 +1,8 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller
 
 import android.annotation.SuppressLint
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype.SignalTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype.SignalType
 
 class TemperatureDataController(private val controllerTarget: ControllerTarget) : SignalTarget {
 
@@ -44,8 +44,7 @@ class TemperatureDataController(private val controllerTarget: ControllerTarget) 
         controllerTarget.temperatureMinimumAvailable(getTemperatureResult(data))
     }
 
-    private fun getTemperatureResult(data: String)
-            = getFormattedResult(data, "C")
+    private fun getTemperatureResult(data: String) = getFormattedResult(data, "C")
 
     private fun setHumidity(data: String) {
         controllerTarget.humidityAvailable(getHumidityResult(data))

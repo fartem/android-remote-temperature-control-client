@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_bluetooth_devices.*
 
 class BluetoothDevicesBottomSheet : BaseBottomSheet() {
 
-    private var bluetoothDeviceSelectListener: OnConnectionSetup? = null
+    private var connectionSetupTarget: ConnectionSetupTarget? = null
 
     private var bluetoothAdapter: BluetoothAdapter? = null
 
@@ -17,7 +17,7 @@ class BluetoothDevicesBottomSheet : BaseBottomSheet() {
         devices.adapter = DevicesAdapter(getBluetoothDevices())
         select_device.setOnClickListener {
             val adapter = (devices.adapter as DevicesAdapter)
-            bluetoothDeviceSelectListener?.onConnectionSetup(
+            connectionSetupTarget?.onConnectionSetup(
                 adapter.getSelectedDeviceName(), adapter.getSelectedDeviceMacAddress()
             )
             dismiss()
@@ -40,8 +40,8 @@ class BluetoothDevicesBottomSheet : BaseBottomSheet() {
         this.bluetoothAdapter = bluetoothAdapter
     }
 
-    fun setBluetoothDeviceSelectCallback(bluetoothDeviceSelectListener: OnConnectionSetup) {
-        this.bluetoothDeviceSelectListener = bluetoothDeviceSelectListener
+    fun setBluetoothDeviceSelectCallback(connectionSetupTarget: ConnectionSetupTarget) {
+        this.connectionSetupTarget = connectionSetupTarget
     }
 
     override fun getLayoutResId() = R.layout.bottom_sheet_bluetooth_devices

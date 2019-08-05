@@ -2,8 +2,8 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype.SignalTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype.SignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.utils.DataParser
 import java.io.InputStream
 import java.io.OutputStream

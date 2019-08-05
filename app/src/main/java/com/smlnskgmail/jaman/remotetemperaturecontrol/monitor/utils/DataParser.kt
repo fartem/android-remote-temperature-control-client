@@ -1,6 +1,6 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.utils
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype.SignalType
 
 object DataParser {
 

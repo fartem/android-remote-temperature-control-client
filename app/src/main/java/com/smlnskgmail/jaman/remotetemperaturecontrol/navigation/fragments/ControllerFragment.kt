@@ -4,17 +4,17 @@ import android.bluetooth.BluetoothAdapter
 import android.view.View
 import android.widget.TextView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signal.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype.SignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorBluetoothConnection
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller.ControllerTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller.TemperatureDataController
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.BluetoothDevicesBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.OnConnectionSetup
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.deviceslist.ConnectionSetupTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.BluetoothDisconnectTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.SettingsBottomSheet
 import kotlinx.android.synthetic.main.fragment_contriller.*
 
-class ControllerFragment : BaseFragment(), ControllerTarget, OnConnectionSetup,
+class ControllerFragment : BaseFragment(), ControllerTarget, ConnectionSetupTarget,
     BluetoothDisconnectTarget {
 
     private lateinit var monitorBluetoothConnection: MonitorBluetoothConnection
