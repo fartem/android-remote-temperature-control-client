@@ -1,23 +1,26 @@
 <resources>
-    <string name="app_name">Remote Temperature Control</string>
+    <string name="app_name">Remote Monitor</string>
 
     <!-- Titles -->
-    <string name="title_temperature">Temperature</string>
-    <string name="title_humidity">Humidity</string>
+    <string name="title_temperature">Temperature:</string>
+    <string name="title_humidity">Humidity:</string>
     <string name="title_connected_device">Connected device:</string>
+    <string name="title_warning">Warning</string>
 
     <!-- Info -->
     <string name="info_temperature_minimum_title">Minimum:</string>
-    <string name="info_temperature_maximum_title">Maximum</string>
+    <string name="info_temperature_maximum_title">Maximum:</string>
     <string name="info_humidity_minimum_title">Minimum:</string>
-    <string name="info_humidity_maximum_title">Maximum</string>
+    <string name="info_humidity_maximum_title">Maximum:</string>
 
     <!-- Actions -->
     <string name="action_options">Options</string>
     <string name="action_reset">Reset</string>
     <string name="action_connect">Connect</string>
     <string name="action_disconnect">Disconnect</string>
+    <string name="action_ok">OK</string>
 
     <!-- Messages -->
-    <string name="message_empty_data">-</string>
+    <string name="message_bt_is_disabled">Bluetooth is disabled on this device! Please enable Bluetooth and restart app</string>
+    <string name="message_no_available_devices">Cannot find available Bluetooth devices! Please add specified Bluetooth device and restart app</string>
 </resources>

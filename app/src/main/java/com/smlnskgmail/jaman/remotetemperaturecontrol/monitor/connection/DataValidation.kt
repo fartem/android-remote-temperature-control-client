@@ -1,8 +1,8 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.utils
+package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
 
-object DataParser {
+object DataValidation {
 
     fun getSignalType(rawData: String): SignalType {
         if (rawData.isEmpty()) {

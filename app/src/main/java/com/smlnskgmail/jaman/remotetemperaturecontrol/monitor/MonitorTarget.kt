@@ -1,6 +1,6 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.controller
+package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor
 
-interface ControllerTarget {
+interface MonitorTarget {
 
     fun temperatureAvailable(data: String)
     fun temperatureMaximumAvailable(data: String)

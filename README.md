@@ -20,9 +20,9 @@ Required [SignalTarget](https://github.com/fartem/android-remote-temperature-con
 
 ### 2.2. TemperatureDataController
 
-Provider between Monitor connection and [ControllerFragment](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/navigation/fragments/ControllerFragment.kt).
+Provider between Monitor connection and [ControllerFragment](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/navigation/fragments/MonitorFragment.kt).
 
-Required [ControllerTarget](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/monitor/controller/ControllerTarget.kt) for send formatted strings to [ControllerFragment](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/navigation/fragments/ControllerFragment.kt).
+Required [ControllerTarget](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/monitor/controller/MonitorTarget.kt) for send formatted strings to [ControllerFragment](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/navigation/fragments/MonitorFragment.kt).
 
 ## 3. Screenshots
 

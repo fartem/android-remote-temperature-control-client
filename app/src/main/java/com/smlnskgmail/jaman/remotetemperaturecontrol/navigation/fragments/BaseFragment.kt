@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment(), FragmentPause {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initializeFragment(view)
@@ -24,5 +24,7 @@ abstract class BaseFragment : Fragment() {
     fun showBottomSheet(bottomSheet: BaseBottomSheet) {
         bottomSheet.show(activity!!.supportFragmentManager, bottomSheet::class.java.name)
     }
+
+    override fun fragmentPause() {}
 
 }

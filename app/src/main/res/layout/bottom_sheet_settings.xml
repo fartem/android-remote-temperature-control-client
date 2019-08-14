@@ -5,7 +5,7 @@
 
     <TextView
             android:id="@+id/settings_disconnect"
-            style="@style/AppSelectableText"
+            style="@style/AppTextAsButton"
             android:text="@string/action_disconnect"/>
 
 </LinearLayout>

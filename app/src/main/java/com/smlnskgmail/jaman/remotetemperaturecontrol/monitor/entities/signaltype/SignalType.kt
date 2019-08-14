@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.entities.signaltype
+package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype
 
 enum class SignalType(val signal: String) {
 

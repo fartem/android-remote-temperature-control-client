@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          android:id="@+id/bt_device_name"
-          style="@style/AppSelectableText"
-          android:drawableEnd="@drawable/ic_item_selected"
-          android:drawableTint="@color/colorAccent"
-          tools:text="HC-05"/>

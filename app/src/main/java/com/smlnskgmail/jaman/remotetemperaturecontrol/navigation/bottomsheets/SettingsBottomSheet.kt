@@ -1,12 +1,12 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.BtDisconnectTarget
 import kotlinx.android.synthetic.main.bottom_sheet_settings.*
 
 class SettingsBottomSheet : BaseBottomSheet() {
 
-    private var disconnectTarget: BluetoothDisconnectTarget? = null
+    private var disconnectTarget: BtDisconnectTarget? = null
 
     override fun initialize() {
         settings_disconnect.setOnClickListener {
@@ -21,7 +21,7 @@ class SettingsBottomSheet : BaseBottomSheet() {
         action()
     }
 
-    fun setBluetoothDisconnectListener(disconnectTarget: BluetoothDisconnectTarget) {
+    fun setBtDisconnectListener(disconnectTarget: BtDisconnectTarget) {
         this.disconnectTarget = disconnectTarget
     }
 
