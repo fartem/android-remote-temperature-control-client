@@ -4,7 +4,7 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltyp
 
 object DataValidation {
 
-    fun getSignalType(rawData: String): SignalType {
+    fun signalType(rawData: String): SignalType {
         if (rawData.isEmpty()) {
             return SignalType.Nothing
         }
@@ -19,7 +19,7 @@ object DataValidation {
         }
     }
 
-    fun getData(rawData: String): String {
+    fun data(rawData: String): String {
         if (rawData.isEmpty()) {
             return ""
         }

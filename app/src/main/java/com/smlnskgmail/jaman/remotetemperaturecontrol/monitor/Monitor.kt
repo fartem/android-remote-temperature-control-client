@@ -27,7 +27,7 @@ class Monitor(private val monitorTarget: MonitorTarget) : SignalTarget {
                 setHumidityMinimum(data)
             }
             else -> {
-                monitorTarget.needReset()
+                monitorTarget.resetRequired()
             }
         }
     }

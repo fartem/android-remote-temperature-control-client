@@ -8,6 +8,6 @@ interface MonitorTarget {
     fun humidityAvailable(data: String)
     fun humidityMaximumAvailable(data: String)
     fun humidityMinimumAvailable(data: String)
-    fun needReset()
+    fun resetRequired()
 
 }

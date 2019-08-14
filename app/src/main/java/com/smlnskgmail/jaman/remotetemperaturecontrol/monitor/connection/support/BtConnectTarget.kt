@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support
+package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support
 
 interface BtConnectTarget {
 

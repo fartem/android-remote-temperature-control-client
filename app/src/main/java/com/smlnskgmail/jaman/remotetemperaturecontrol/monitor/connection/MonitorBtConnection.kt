@@ -18,10 +18,10 @@ class MonitorBtConnection(
 
     private val BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
-    private var btSocket: BluetoothSocket
+    private var btSocket: BluetoothSocket?
 
-    private lateinit var inputStream: InputStream
-    private lateinit var outputStream: OutputStream
+    private var inputStream: InputStream? = null
+    private var outputStream: OutputStream? = null
 
     private var isRunning = false
 
@@ -39,38 +39,44 @@ class MonitorBtConnection(
 
     private fun read() {
         if (inputStreamIsOpen()) {
-            val rawData = inputStream.bufferedReader().readLine()
-            val signalType = DataValidation.getSignalType(rawData)
-            val data = DataValidation.getData(rawData)
+            val rawData = inputStream!!.bufferedReader().readLine()
+            val signalType = DataValidation.signalType(rawData)
+            val data = DataValidation.data(rawData)
             signalTarget.onNewDataAvailable(signalType, data)
         }
     }
 
-    private fun inputStreamIsOpen() = inputStream.bufferedReader().ready()
+    private fun inputStreamIsOpen() = inputStream!!.bufferedReader().ready()
 
     fun send(signalType: SignalType) {
-        outputStream.write(signalType.signal.toByteArray())
+        outputStream!!.write(signalType.signal.toByteArray())
     }
 
     fun connect() {
-        if (!btSocket.isConnected) {
-            btSocket.connect()
-            inputStream = btSocket.inputStream
-            outputStream = btSocket.outputStream
+        if (!btSocket!!.isConnected) {
+            btSocket!!.connect()
+            inputStream = btSocket!!.inputStream
+            outputStream = btSocket!!.outputStream
         }
     }
 
     fun disconnect() {
-        if (btSocket.isConnected) {
+        if (btSocket!!.isConnected) {
             isRunning = false
-            btSocket.close()
-            inputStream.close()
-            outputStream.close()
+            btSocket!!.close()
+            inputStream!!.close()
+            outputStream!!.close()
+
+            btSocket = null
+            inputStream = null
+            outputStream = null
         }
     }
 
     fun handleOnResume() {
-
+        if (outputStream != null) {
+            outputStream!!.flush()
+        }
     }
 
     private fun runRead() {

@@ -3,11 +3,11 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signalty
 enum class SignalType(val signal: String) {
 
     Temperature("t"),
-    TemperatureMaximum("m"),
     TemperatureMinimum("i"),
+    TemperatureMaximum("m"),
     Humidity("h"),
-    HumidityMaximum("w"),
     HumidityMinimum("q"),
+    HumidityMaximum("w"),
     Reset("r"),
     Nothing("");
 

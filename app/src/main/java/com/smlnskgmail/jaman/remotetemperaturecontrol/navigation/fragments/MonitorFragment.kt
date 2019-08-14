@@ -12,8 +12,8 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.Monitor
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdeviceslist.BtDevicesBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.BtConnectTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.BtDisconnectTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtConnectTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtDisconnectTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.SettingsBottomSheet
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
@@ -90,7 +90,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
         setTextOnUIThread(tv_humidity_min_value, data)
     }
 
-    override fun needReset() {
+    override fun resetRequired() {
         activity!!.runOnUiThread {
             val valueViews = listOf<TextView>(
                 tv_temperature_value,
@@ -156,7 +156,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
 
     override fun disconnect() {
         monitorBtConnection.disconnect()
-        needReset()
+        resetRequired()
         startMonitor()
     }
 
