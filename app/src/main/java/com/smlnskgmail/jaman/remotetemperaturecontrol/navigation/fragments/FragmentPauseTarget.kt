@@ -1,6 +1,6 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments
 
-interface FragmentPause {
+interface FragmentPauseTarget {
 
     fun fragmentPause()
 

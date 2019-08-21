@@ -2,6 +2,6 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.suppor
 
 interface BtDisconnectTarget {
 
-    fun disconnect()
+    fun btDisconnect()
 
 }

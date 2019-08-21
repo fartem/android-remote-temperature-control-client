@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
 
-abstract class BaseFragment : Fragment(), FragmentPause {
+abstract class BaseFragment : Fragment(), FragmentPauseTarget {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initializeFragment(view)

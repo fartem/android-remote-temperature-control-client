@@ -15,7 +15,8 @@ object DataValidation {
             SignalType.Humidity.signal -> SignalType.Humidity
             SignalType.HumidityMaximum.signal -> SignalType.HumidityMaximum
             SignalType.HumidityMinimum.signal -> SignalType.HumidityMinimum
-            else -> SignalType.Reset
+            SignalType.Reset.signal -> SignalType.Reset
+            else -> SignalType.Other
         }
     }
 

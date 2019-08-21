@@ -9,6 +9,7 @@ enum class SignalType(val signal: String) {
     HumidityMinimum("q"),
     HumidityMaximum("w"),
     Reset("r"),
-    Nothing("");
+    Nothing(""),
+    Other("");
 
 }

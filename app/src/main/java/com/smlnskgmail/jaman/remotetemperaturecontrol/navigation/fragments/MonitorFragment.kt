@@ -6,15 +6,15 @@ import android.view.View
 import android.widget.TextView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.DialogWithMessage
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.MonitorBtConnection
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.Monitor
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdeviceslist.BtDevicesBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.MonitorBtConnection
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtConnectTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtDisconnectTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.SettingsBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdeviceslist.BtDevicesBottomSheet
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
 class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDisconnectTarget {
@@ -113,7 +113,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
         }
     }
 
-    override fun onDeviceSelected(name: String, address: String) {
+    override fun onBtDeviceSelected(name: String, address: String) {
         monitorBtConnection = MonitorBtConnection(btAdapter, address, monitor)
         monitorBtConnection.connect()
         monitorBtConnection.start()
@@ -154,7 +154,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
         showBottomSheet(settingsBottomSheet)
     }
 
-    override fun disconnect() {
+    override fun btDisconnect() {
         monitorBtConnection.disconnect()
         resetRequired()
         startMonitor()

@@ -2,9 +2,8 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.datavalidation
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.DataValidation
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
-import org.junit.Test
-
 import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class DataValidationTest {
 

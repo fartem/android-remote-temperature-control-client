@@ -11,7 +11,7 @@ class SettingsBottomSheet : BaseBottomSheet() {
     override fun initialize() {
         settings_disconnect.setOnClickListener {
             actionAndDismiss {
-                disconnectTarget?.disconnect()
+                disconnectTarget?.btDisconnect()
             }
         }
     }

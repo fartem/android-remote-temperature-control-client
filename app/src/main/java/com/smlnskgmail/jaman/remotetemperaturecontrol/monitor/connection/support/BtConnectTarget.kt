@@ -2,6 +2,6 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.suppor
 
 interface BtConnectTarget {
 
-    fun onDeviceSelected(name: String, address: String)
+    fun onBtDeviceSelected(name: String, address: String)
 
 }

@@ -3,13 +3,11 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.datasend
 import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.TestMonitorTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.TestSignalTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
-
-import org.junit.Assert.assertEquals
 
 class DataSendTest {
 
