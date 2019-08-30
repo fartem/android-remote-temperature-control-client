@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets
+package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets
 
 import android.os.Bundle
 import android.view.LayoutInflater

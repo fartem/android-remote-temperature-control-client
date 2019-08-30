@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components
+package com.smlnskgmail.jaman.remotetemperaturecontrol.components.dialogs
 
 import android.app.AlertDialog
 import android.content.Context

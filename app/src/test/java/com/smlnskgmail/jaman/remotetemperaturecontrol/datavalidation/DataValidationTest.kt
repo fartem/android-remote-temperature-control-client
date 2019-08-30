@@ -58,7 +58,7 @@ class DataValidationTest {
 
     companion object {
 
-        private val DEFAULT_CLEAN_RESULT = "25.5"
+        private const val DEFAULT_CLEAN_RESULT = "25.5"
 
     }
 

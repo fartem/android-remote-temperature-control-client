@@ -42,4 +42,28 @@
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 
+    <style name="AppBtDevice">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/common_padding</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AppBtDeviceName">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_standard</item>
+    </style>
+
+    <style name="AppBtDeviceSelectedImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/common_padding</item>
+        <item name="android:tint">@color/colorAccent</item>
+        <item name="android:src">@drawable/ic_item_selected</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
 </resources>

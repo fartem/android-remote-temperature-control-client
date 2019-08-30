@@ -16,7 +16,7 @@ class MonitorBtConnection(
 
 ) : Thread() {
 
-    private val BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+    private val btUuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
     private var btSocket: BluetoothSocket?
 
@@ -27,7 +27,7 @@ class MonitorBtConnection(
 
     init {
         val btDevice = btAdapter.getRemoteDevice(deviceMacAddress)
-        btSocket = btDevice.createRfcommSocketToServiceRecord(BT_UUID)
+        btSocket = btDevice.createRfcommSocketToServiceRecord(btUuid)
     }
 
     override fun run() {
