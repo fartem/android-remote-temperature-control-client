@@ -1,10 +1,10 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.btdevices
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtConnectTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.btdevices.list.BtDevicesAdapter
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtConnectTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
 import kotlinx.android.synthetic.main.bottom_sheet_bt_devices.*
 
 class BtDevicesBottomSheet : BaseBottomSheet() {

@@ -4,12 +4,11 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 
-object DialogWithMessage {
+object AlertDialog {
 
     fun show(context: Context, title: Int, message: Int, buttonText: Int,
              buttonClick: DialogInterface.OnClickListener) {
-        val alertDialogBuilder = AlertDialog.Builder(context)
-        alertDialogBuilder.setTitle(title)
+        AlertDialog.Builder(context).setTitle(title)
             .setMessage(message)
             .setNegativeButton(buttonText, buttonClick)
             .setCancelable(false)

@@ -3,8 +3,8 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.FragmentPauseTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.MonitorFragment
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.FragmentPauseTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.monitor.MonitorFragment
 
 class MainActivity : AppCompatActivity() {
 
