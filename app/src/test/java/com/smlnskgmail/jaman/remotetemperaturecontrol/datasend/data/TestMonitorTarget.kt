@@ -1,8 +1,9 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.MonitorTarget
 
-class TestMonitorTarget : MonitorTarget {
+class TestMonitorTarget :
+    MonitorTarget {
 
     override fun temperatureAvailable(data: String) {
         printText(data)

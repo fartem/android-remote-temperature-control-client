@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor
+package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support
 
 interface MonitorTarget {
 

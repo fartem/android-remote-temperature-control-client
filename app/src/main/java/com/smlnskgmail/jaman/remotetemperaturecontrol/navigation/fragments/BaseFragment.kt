@@ -1,13 +1,14 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.BtPauseTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
 
-abstract class BaseFragment : Fragment(), FragmentPauseTarget {
+abstract class BaseFragment : Fragment(), BtPauseTarget {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initializeFragment(view)

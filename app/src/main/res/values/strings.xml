@@ -18,7 +18,7 @@
     <string name="action_reset">Reset</string>
     <string name="action_connect">Connect</string>
     <string name="action_disconnect">Disconnect</string>
-    <string name="action_ok">OK</string>
+    <string name="action_exit">Exit</string>
 
     <!-- Messages -->
     <string name="message_bt_is_disabled">Bluetooth is disabled on this device! Please enable Bluetooth and restart app</string>

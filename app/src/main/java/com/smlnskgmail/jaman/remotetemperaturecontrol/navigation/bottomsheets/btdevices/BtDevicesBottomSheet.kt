@@ -1,10 +1,10 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.btdevices
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdevices
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.btdevices.list.BtDevicesAdapter
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtConnectTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdevices.list.BtDevicesAdapter
 import kotlinx.android.synthetic.main.bottom_sheet_bt_devices.*
 
 class BtDevicesBottomSheet : BaseBottomSheet() {
@@ -16,9 +16,7 @@ class BtDevicesBottomSheet : BaseBottomSheet() {
         devices.adapter = BtDevicesAdapter(btDevices)
         select_device.setOnClickListener {
             val adapter = (devices.adapter as BtDevicesAdapter)
-            btConnectTarget?.onBtDeviceSelected(
-                adapter.getSelectedDeviceName(), adapter.getSelectedDeviceMacAddress()
-            )
+            btConnectTarget?.onBtDeviceSelected(adapter.getSelectedDeviceName(), adapter.getSelectedDeviceMacAddress())
             dismiss()
         }
     }

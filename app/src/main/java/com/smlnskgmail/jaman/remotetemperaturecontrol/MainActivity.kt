@@ -3,8 +3,8 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.FragmentPauseTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.monitor.MonitorFragment
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.BtPauseTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.monitor.MonitorFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleOnPause() {
         val currentFragment = supportFragmentManager.findFragmentByTag(CURRENT_FRAGMENT_TAG)
-        if (currentFragment != null && currentFragment is FragmentPauseTarget) {
+        if (currentFragment != null && currentFragment is BtPauseTarget) {
             currentFragment.fragmentPause()
         }
     }

@@ -1,8 +1,8 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.MonitorTarget
 
 class TestSignalTarget(private val monitorTarget: MonitorTarget) : SignalTarget {
 

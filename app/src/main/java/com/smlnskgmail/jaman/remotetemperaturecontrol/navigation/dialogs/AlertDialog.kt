@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.dialogs
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.dialogs
 
 import android.app.AlertDialog
 import android.content.Context
@@ -6,9 +6,9 @@ import android.content.DialogInterface
 
 object AlertDialog {
 
-    fun show(context: Context, title: Int, message: Int, buttonText: Int,
+    fun show(context: Context, titleResId: Int, message: Int, buttonText: Int,
              buttonClick: DialogInterface.OnClickListener) {
-        AlertDialog.Builder(context).setTitle(title)
+        AlertDialog.Builder(context).setTitle(titleResId)
             .setMessage(message)
             .setNegativeButton(buttonText, buttonClick)
             .setCancelable(false)

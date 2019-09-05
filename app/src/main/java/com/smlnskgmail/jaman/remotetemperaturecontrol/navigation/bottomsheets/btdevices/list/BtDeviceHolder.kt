@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.btdevices.list
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdevices.list
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

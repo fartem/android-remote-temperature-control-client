@@ -1,21 +1,21 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.monitor
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.monitor
 
 import android.bluetooth.BluetoothAdapter
 import android.content.DialogInterface
 import android.view.View
 import android.widget.TextView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.btdevices.BtDevicesBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.settings.SettingsBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.dialogs.AlertDialog
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.Monitor
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.MonitorBtConnection
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtConnectTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtDisconnectTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.BaseFragment
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.MonitorTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdevices.BtDevicesBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.SettingsBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.dialogs.AlertDialog
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.BaseFragment
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
 class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDisconnectTarget {
@@ -128,15 +128,15 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
 
     private fun showBtDisabledWarning() {
         AlertDialog.show(context!!, R.string.title_warning, R.string.message_bt_is_disabled,
-            R.string.action_ok, DialogInterface.OnClickListener { _, _ ->
-
+            R.string.action_exit, DialogInterface.OnClickListener { _, _ ->
+                activity!!.finish()
             })
     }
 
     private fun showBtDevicesNotFoundWarning() {
         AlertDialog.show(context!!, R.string.title_warning, R.string.message_no_available_devices,
-            R.string.action_ok, DialogInterface.OnClickListener { _, _ ->
-
+            R.string.action_exit, DialogInterface.OnClickListener { _, _ ->
+                activity!!.finish()
             })
     }
 

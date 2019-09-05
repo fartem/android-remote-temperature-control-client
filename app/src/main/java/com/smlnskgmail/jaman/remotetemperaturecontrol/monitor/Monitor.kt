@@ -3,65 +3,52 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor
 import android.annotation.SuppressLint
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.MonitorTarget
 
 class Monitor(private val monitorTarget: MonitorTarget) : SignalTarget {
 
     override fun onNewDataAvailable(signalType: SignalType, data: String) {
         when(signalType) {
-            SignalType.Temperature -> {
-                setTemperature(data)
-            }
-            SignalType.TemperatureMaximum -> {
-                setTemperatureMaximum(data)
-            }
-            SignalType.TemperatureMinimum -> {
-                setTemperatureMinimum(data)
-            }
-            SignalType.Humidity -> {
-                setHumidity(data)
-            }
-            SignalType.HumidityMaximum -> {
-                setHumidityMaximum(data)
-            }
-            SignalType.HumidityMinimum -> {
-                setHumidityMinimum(data)
-            }
-            SignalType.Reset -> {
-                monitorTarget.resetRequired()
-            }
+            SignalType.Temperature -> setTemperature(data)
+            SignalType.TemperatureMaximum -> setTemperatureMaximum(data)
+            SignalType.TemperatureMinimum -> setTemperatureMinimum(data)
+            SignalType.Humidity -> setHumidity(data)
+            SignalType.HumidityMaximum -> setHumidityMaximum(data)
+            SignalType.HumidityMinimum -> setHumidityMinimum(data)
+            SignalType.Reset -> monitorTarget.resetRequired()
             else -> {}
         }
     }
 
     private fun setTemperature(data: String) {
-        monitorTarget.temperatureAvailable(getTemperatureResult(data))
+        monitorTarget.temperatureAvailable(temperatureResult(data))
     }
 
     private fun setTemperatureMaximum(data: String) {
-        monitorTarget.temperatureMaximumAvailable(getTemperatureResult(data))
+        monitorTarget.temperatureMaximumAvailable(temperatureResult(data))
     }
 
     private fun setTemperatureMinimum(data: String) {
-        monitorTarget.temperatureMinimumAvailable(getTemperatureResult(data))
+        monitorTarget.temperatureMinimumAvailable(temperatureResult(data))
     }
 
-    private fun getTemperatureResult(data: String) = getFormattedResult(data, "C")
+    private fun temperatureResult(data: String) = formattedResult(data, "C")
 
     private fun setHumidity(data: String) {
-        monitorTarget.humidityAvailable(getHumidityResult(data))
+        monitorTarget.humidityAvailable(humidityResult(data))
     }
 
     private fun setHumidityMaximum(data: String) {
-        monitorTarget.humidityMaximumAvailable(getHumidityResult(data))
+        monitorTarget.humidityMaximumAvailable(humidityResult(data))
     }
 
     private fun setHumidityMinimum(data: String) {
-        monitorTarget.humidityMinimumAvailable(getHumidityResult(data))
+        monitorTarget.humidityMinimumAvailable(humidityResult(data))
     }
 
-    private fun getHumidityResult(data: String) = getFormattedResult(data, "%")
+    private fun humidityResult(data: String) = formattedResult(data, "%")
 
     @SuppressLint("SetTextI18n")
-    private fun getFormattedResult(data: String, measure: String) = "$data $measure"
+    private fun formattedResult(data: String, measure: String) = "$data $measure"
 
 }
