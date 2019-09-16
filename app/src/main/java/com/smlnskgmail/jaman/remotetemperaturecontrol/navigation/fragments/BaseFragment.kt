@@ -25,6 +25,6 @@ abstract class BaseFragment : Fragment(), BtPauseTarget {
         bottomSheet.show(activity!!.supportFragmentManager, bottomSheet::class.java.name)
     }
 
-    override fun fragmentPause() {}
+    override fun handleBtInOnPause() {}
 
 }

@@ -14,7 +14,7 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltyp
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.MonitorTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdevices.BtDevicesBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.SettingsBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.dialogs.AlertDialog
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.dialogs.AppDialog
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.BaseFragment
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
@@ -127,14 +127,14 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
     }
 
     private fun showBtDisabledWarning() {
-        AlertDialog.show(context!!, R.string.title_warning, R.string.message_bt_is_disabled,
+        AppDialog.show(context!!, R.string.title_warning, R.string.message_bt_is_disabled,
             R.string.action_exit, DialogInterface.OnClickListener { _, _ ->
                 activity!!.finish()
             })
     }
 
     private fun showBtDevicesNotFoundWarning() {
-        AlertDialog.show(context!!, R.string.title_warning, R.string.message_no_available_devices,
+        AppDialog.show(context!!, R.string.title_warning, R.string.message_no_available_devices,
             R.string.action_exit, DialogInterface.OnClickListener { _, _ ->
                 activity!!.finish()
             })
@@ -161,7 +161,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
         startMonitor()
     }
 
-    override fun fragmentPause() {
+    override fun handleBtInOnPause() {
         monitorBtConnection.handleOnResume()
     }
 

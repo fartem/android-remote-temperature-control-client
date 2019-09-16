@@ -43,7 +43,7 @@ class DataValidationTest {
     }
 
     private fun checkValidation(signalType: SignalType, cleanResult: String = DEFAULT_CLEAN_RESULT) {
-        val rawData = rawData(signalType, cleanResult)
+        val rawData = rawData(SignalType.signalOf(signalType), cleanResult)
 
         val parsedSignalType = DataValidation.signalType(rawData)
         assertEquals(parsedSignalType, signalType)
@@ -52,8 +52,8 @@ class DataValidationTest {
         assertEquals(parsedData, cleanResult)
     }
 
-    private fun rawData(signalType: SignalType, cleanResult: String): String {
-        return String.format("%s%s", signalType.signal, cleanResult)
+    private fun rawData(signalType: String, cleanResult: String): String {
+        return String.format("%s%s", signalType, cleanResult)
     }
 
     companion object {

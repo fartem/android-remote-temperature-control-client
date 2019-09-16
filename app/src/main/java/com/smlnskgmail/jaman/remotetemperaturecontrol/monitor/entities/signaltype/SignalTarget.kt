@@ -2,6 +2,6 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signalty
 
 interface SignalTarget {
 
-    fun onNewDataAvailable(signalType: SignalType, data: String)
+    fun onNewDataAvailable(signalType: SignalType, rawData: String)
 
 }

@@ -7,48 +7,48 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.MonitorTar
 
 class Monitor(private val monitorTarget: MonitorTarget) : SignalTarget {
 
-    override fun onNewDataAvailable(signalType: SignalType, data: String) {
+    override fun onNewDataAvailable(signalType: SignalType, rawData: String) {
         when(signalType) {
-            SignalType.Temperature -> setTemperature(data)
-            SignalType.TemperatureMaximum -> setTemperatureMaximum(data)
-            SignalType.TemperatureMinimum -> setTemperatureMinimum(data)
-            SignalType.Humidity -> setHumidity(data)
-            SignalType.HumidityMaximum -> setHumidityMaximum(data)
-            SignalType.HumidityMinimum -> setHumidityMinimum(data)
+            SignalType.Temperature -> setTemperature(rawData)
+            SignalType.TemperatureMaximum -> setTemperatureMaximum(rawData)
+            SignalType.TemperatureMinimum -> setTemperatureMinimum(rawData)
+            SignalType.Humidity -> setHumidity(rawData)
+            SignalType.HumidityMaximum -> setHumidityMaximum(rawData)
+            SignalType.HumidityMinimum -> setHumidityMinimum(rawData)
             SignalType.Reset -> monitorTarget.resetRequired()
             else -> {}
         }
     }
 
-    private fun setTemperature(data: String) {
-        monitorTarget.temperatureAvailable(temperatureResult(data))
+    private fun setTemperature(rawData: String) {
+        monitorTarget.temperatureAvailable(temperatureResult(rawData))
     }
 
-    private fun setTemperatureMaximum(data: String) {
-        monitorTarget.temperatureMaximumAvailable(temperatureResult(data))
+    private fun setTemperatureMaximum(rawData: String) {
+        monitorTarget.temperatureMaximumAvailable(temperatureResult(rawData))
     }
 
-    private fun setTemperatureMinimum(data: String) {
-        monitorTarget.temperatureMinimumAvailable(temperatureResult(data))
+    private fun setTemperatureMinimum(rawData: String) {
+        monitorTarget.temperatureMinimumAvailable(temperatureResult(rawData))
     }
 
-    private fun temperatureResult(data: String) = formattedResult(data, "C")
+    private fun temperatureResult(rawData: String) = formattedResult(rawData, "C")
 
-    private fun setHumidity(data: String) {
-        monitorTarget.humidityAvailable(humidityResult(data))
+    private fun setHumidity(rawData: String) {
+        monitorTarget.humidityAvailable(humidityResult(rawData))
     }
 
-    private fun setHumidityMaximum(data: String) {
-        monitorTarget.humidityMaximumAvailable(humidityResult(data))
+    private fun setHumidityMaximum(rawData: String) {
+        monitorTarget.humidityMaximumAvailable(humidityResult(rawData))
     }
 
-    private fun setHumidityMinimum(data: String) {
-        monitorTarget.humidityMinimumAvailable(humidityResult(data))
+    private fun setHumidityMinimum(rawData: String) {
+        monitorTarget.humidityMinimumAvailable(humidityResult(rawData))
     }
 
-    private fun humidityResult(data: String) = formattedResult(data, "%")
+    private fun humidityResult(rawData: String) = formattedResult(rawData, "%")
 
     @SuppressLint("SetTextI18n")
-    private fun formattedResult(data: String, measure: String) = "$data $measure"
+    private fun formattedResult(rawData: String, measure: String) = "$rawData $measure"
 
 }

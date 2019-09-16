@@ -49,7 +49,7 @@ class MonitorBtConnection(
     private fun inputStreamIsOpen() = inputStream!!.bufferedReader().ready()
 
     fun send(signalType: SignalType) {
-        outputStream!!.write(signalType.signal.toByteArray())
+        outputStream!!.write(SignalType.signalOf(signalType).toByteArray())
     }
 
     fun connect() {

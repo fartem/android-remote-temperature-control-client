@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun handleOnPause() {
         val currentFragment = supportFragmentManager.findFragmentByTag(CURRENT_FRAGMENT_TAG)
         if (currentFragment != null && currentFragment is BtPauseTarget) {
-            currentFragment.fragmentPause()
+            currentFragment.handleBtInOnPause()
         }
     }
 

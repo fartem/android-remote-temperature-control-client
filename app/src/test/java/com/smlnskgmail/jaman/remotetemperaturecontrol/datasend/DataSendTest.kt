@@ -1,7 +1,7 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.datasend
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.TestMonitorTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.TestSignalTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.FakeMonitorTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.FakeSignalTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -11,8 +11,8 @@ import java.io.PrintStream
 
 class DataSendTest {
 
-    private val monitorTarget = TestMonitorTarget()
-    private val signalTarget = TestSignalTarget(monitorTarget)
+    private val monitorTarget = FakeMonitorTarget()
+    private val signalTarget = FakeSignalTarget(monitorTarget)
 
     private val outputStream = ByteArrayOutputStream()
 
