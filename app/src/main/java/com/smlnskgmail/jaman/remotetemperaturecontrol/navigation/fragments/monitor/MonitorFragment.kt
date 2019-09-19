@@ -20,10 +20,10 @@ import kotlinx.android.synthetic.main.fragment_monitor.*
 
 class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDisconnectTarget {
 
-    private lateinit var monitorBtConnection: MonitorBtConnection
-    private lateinit var btAdapter: BluetoothAdapter
+    private var monitorBtConnection: MonitorBtConnection? = null
+    private var btAdapter: BluetoothAdapter? = null
 
-    private lateinit var monitor: Monitor
+    private var monitor: Monitor? = null
 
     override fun initializeFragment(view: View) {
         startMonitor()
@@ -55,12 +55,11 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
     }
 
     private fun getBtDevices(): List<BtDevice> {
-        val bondedDevices= btAdapter.bondedDevices
+        val bondedDevices= btAdapter!!.bondedDevices
         if (bondedDevices.isNotEmpty()) {
             val devices = arrayListOf<BtDevice>()
             for (bondedDevice in bondedDevices) {
-                devices.add(BtDevice(bondedDevice.name, bondedDevice.address)
-                )
+                devices.add(BtDevice(bondedDevice.name, bondedDevice.address))
             }
             return devices
         }
@@ -115,9 +114,9 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
     }
 
     override fun onBtDeviceSelected(name: String, address: String) {
-        monitorBtConnection = MonitorBtConnection(btAdapter, address, monitor)
-        monitorBtConnection.connect()
-        monitorBtConnection.start()
+        monitorBtConnection = MonitorBtConnection(btAdapter!!, address, monitor!!)
+        monitorBtConnection!!.connect()
+        monitorBtConnection!!.start()
         setDeviceName(name)
         initializeButtons()
     }
@@ -142,7 +141,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
 
     private fun initializeButtons() {
         btn_reset_monitor.setOnClickListener {
-            monitorBtConnection.send(SignalType.Reset)
+            monitorBtConnection!!.send(SignalType.Reset)
         }
         btn_main_options.setOnClickListener {
             showSettings()
@@ -156,13 +155,13 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
     }
 
     override fun btDisconnect() {
-        monitorBtConnection.disconnect()
+        monitorBtConnection!!.disconnect()
         resetRequired()
         startMonitor()
     }
 
     override fun handleBtInOnPause() {
-        monitorBtConnection.handleOnResume()
+        monitorBtConnection!!.handleOnResume()
     }
 
     override fun getLayoutResId() = R.layout.fragment_monitor

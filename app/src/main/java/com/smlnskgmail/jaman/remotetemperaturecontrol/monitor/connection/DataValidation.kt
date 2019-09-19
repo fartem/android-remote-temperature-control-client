@@ -5,7 +5,7 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltyp
 object DataValidation {
 
     fun signalType(rawData: String): SignalType {
-        return SignalType.fromRawData(rawData[0].toString())
+        return SignalType.fromRawData(rawData)
     }
 
     fun data(rawData: String): String {

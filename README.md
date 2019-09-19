@@ -26,4 +26,14 @@ Required [MonitorTarget](https://github.com/fartem/android-remote-temperature-co
 
 ## 3. Screenshots
 
+<br/>
+<p align="center">
+  <img src="media/screenshots/screenshot_01.png" width="150" />
+  <img src="media/screenshots/screenshot_02.png" width="150" />
+  <img src="media/screenshots/screenshot_03.png" width="150" />
+  <img src="media/screenshots/screenshot_04.png" width="150" />
+</p>
+
 ## 4. About
+
+In development.
