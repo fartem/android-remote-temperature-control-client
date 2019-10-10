@@ -56,14 +56,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
 
     private fun getBtDevices(): List<BtDevice> {
         val bondedDevices= btAdapter!!.bondedDevices
-        if (bondedDevices.isNotEmpty()) {
-            val devices = arrayListOf<BtDevice>()
-            for (bondedDevice in bondedDevices) {
-                devices.add(BtDevice(bondedDevice.name, bondedDevice.address))
-            }
-            return devices
-        }
-        return emptyList()
+        return bondedDevices.mapTo(ArrayList(bondedDevices.size)) { BtDevice(it.name, it.address) }
     }
 
     override fun temperatureAvailable(data: String) {

@@ -14,8 +14,7 @@ abstract class BaseBottomSheet : BottomSheetDialogFragment() {
 
     abstract fun initialize()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = inflater.inflate(getLayoutResId(), container, false)
 
     abstract fun getLayoutResId(): Int

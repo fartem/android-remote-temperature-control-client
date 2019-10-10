@@ -40,8 +40,8 @@ class MonitorBtConnection(
     private fun read() {
         if (inputStreamIsOpen()) {
             val rawData = inputStream!!.bufferedReader().readLine()
-            val signalType = DataValidation.signalType(rawData)
-            val data = DataValidation.data(rawData)
+            val signalType = MonitorDataExtractor.signalType(rawData)
+            val data = MonitorDataExtractor.data(rawData)
             signalTarget.onNewDataAvailable(signalType, data)
         }
     }

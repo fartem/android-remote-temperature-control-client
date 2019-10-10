@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
 
-object DataValidation {
+object MonitorDataExtractor {
 
     fun signalType(rawData: String): SignalType {
         return SignalType.fromRawData(rawData)

@@ -1,11 +1,11 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.datavalidation
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.DataValidation
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.MonitorDataExtractor
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class DataValidationTest {
+class MonitorDataExtractorTest {
 
     @Test
     fun validateTemperatureParse() {
@@ -45,10 +45,10 @@ class DataValidationTest {
     private fun checkValidation(signalType: SignalType, cleanResult: String = DEFAULT_CLEAN_RESULT) {
         val rawData = rawData(SignalType.signalOf(signalType), cleanResult)
 
-        val parsedSignalType = DataValidation.signalType(rawData)
+        val parsedSignalType = MonitorDataExtractor.signalType(rawData)
         assertEquals(parsedSignalType, signalType)
 
-        val parsedData = DataValidation.data(rawData)
+        val parsedData = MonitorDataExtractor.data(rawData)
         assertEquals(parsedData, cleanResult)
     }
 
