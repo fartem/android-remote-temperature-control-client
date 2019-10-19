@@ -6,7 +6,7 @@ Remote client for [Arduino temperature project](https://github.com/fartem/arduin
 
 __How to use this app:__
 
-1. Install and run [Arduino module]((https://github.com/fartem/arduino-temperature-control));
+1. Install and run [Arduino module](https://github.com/fartem/arduino-temperature-control);
 2. Pair your Android device and Arduino Bluetooth module;
 3. Install and run Android application and select Arduino Bluetooth module from devices list.
 
@@ -24,7 +24,16 @@ Provider between Monitor connection and [MonitorFragment](https://github.com/far
 
 Required [MonitorTarget](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/monitor/MonitorTarget.kt) for send formatted strings to [MonitorFragment](https://github.com/fartem/android-remote-temperature-control-client/blob/master/app/src/main/java/com/smlnskgmail/jaman/remotetemperaturecontrol/navigation/fragments/MonitorFragment.kt).
 
-## 3. Screenshots
+## 3. Tests
+
+Suite class: `TestSuite`.
+
+| Order | Class | Description | Status |
+| --- | --- | --- | --- |
+| 1 | MonitorDataExtractorTest | Check parsing result from Arduino | `Pass` |
+| 2 | DataSendTest | Validate data sending | `Pass` |
+
+## 4. Screenshots
 
 <br/>
 <p align="center">
@@ -34,6 +43,6 @@ Required [MonitorTarget](https://github.com/fartem/android-remote-temperature-co
   <img src="media/screenshots/screenshot_04.png" width="150" />
 </p>
 
-## 4. About
+## 5. About
 
-In development.
+Main functionality working and tested on real system (see more [here](https://github.com/fartem/arduino-temperature-control)). May contains some UI bugs.
