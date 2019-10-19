@@ -30,8 +30,8 @@ Suite class: `TestSuite`.
 
 | Order | Class | Description | Status |
 | --- | --- | --- | --- |
-| 1 | MonitorDataExtractorTest | Check parsing result from Arduino | `Pass` |
-| 2 | DataSendTest | Validate data sending | `Pass` |
+| 1 | `MonitorDataExtractorTest` | Check parsing result from Arduino | Pass |
+| 2 | `DataSendTest` | Validate data sending | Pass |
 
 ## 4. Screenshots
 
