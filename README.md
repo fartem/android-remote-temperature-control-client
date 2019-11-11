@@ -1,8 +1,16 @@
-# android-remote-temperature-control-client
+<img src="media/ic_app.png" height="100px" />
+
+![Open issues](https://img.shields.io/github/issues-raw/fartem/android-remote-temperature-control-client.svg?color=ff534a)
+![Last commit](https://img.shields.io/github/last-commit/fartem/android-remote-temperature-control-client.svg?color=51539c)
+![Repo size](https://img.shields.io/github/repo-size/fartem/android-remote-temperature-control-client.svg?color=02778b)
+[![License](https://img.shields.io/github/license/fartem/android-remote-temperature-control-client.svg?color=7ea4b0)](https://github.com/fartem/hash-checker/blob/master/LICENSE)
+
+## About
 
 Remote client for [Arduino temperature project](https://github.com/fartem/arduino-temperature-control).
+Main functionality working and tested on real system (see more [here](https://github.com/fartem/arduino-temperature-control)). May contains some UI bugs.
 
-## 1. Before install
+## Before start
 
 __How to use this app:__
 
@@ -10,7 +18,7 @@ __How to use this app:__
 2. Pair your Android device and Arduino Bluetooth module;
 3. Install and run Android application and select Arduino Bluetooth module from devices list.
 
-## 2. Screenshots
+## Screenshots
 
 <br/>
 <p align="center">
@@ -19,7 +27,3 @@ __How to use this app:__
   <img src="media/screenshots/screenshot_03.png" width="150" />
   <img src="media/screenshots/screenshot_04.png" width="150" />
 </p>
-
-## 3. About
-
-Main functionality working and tested on real system (see more [here](https://github.com/fartem/arduino-temperature-control)). May contains some UI bugs.
