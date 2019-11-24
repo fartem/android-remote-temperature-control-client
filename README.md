@@ -1,9 +1,9 @@
 <img src="media/ic_app.png" height="100px" />
 
-![Open issues](https://img.shields.io/github/issues-raw/fartem/android-remote-temperature-control-client.svg?color=ff534a)
-![Last commit](https://img.shields.io/github/last-commit/fartem/android-remote-temperature-control-client.svg?color=51539c)
-![Repo size](https://img.shields.io/github/repo-size/fartem/android-remote-temperature-control-client.svg?color=02778b)
-![License](https://img.shields.io/github/license/fartem/android-remote-temperature-control-client.svg?color=7ea4b0)
+![Open issues](https://img.shields.io/github/issues-raw/fartem/android-remote-temperature-control-client.svg?color=ff534a&style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/fartem/android-remote-temperature-control-client.svg?color=51539c&style=flat-square)
+![Repo size](https://img.shields.io/github/repo-size/fartem/android-remote-temperature-control-client.svg?color=02778b&style=flat-square)
+![License](https://img.shields.io/github/license/fartem/android-remote-temperature-control-client.svg?color=7ea4b0&style=flat-square)
 
 ## About
 
