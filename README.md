@@ -8,7 +8,7 @@
 ## About
 
 Remote client for [Arduino temperature project](https://github.com/fartem/arduino-temperature-control).
-Main functionality working and tested on real system (see more [here](https://github.com/fartem/arduino-temperature-control)). May contains some UI bugs.
+Main functionality working and tested on real system (see more [here](https://github.com/fartem/arduino-temperature-control)).
 
 ## Before start
 

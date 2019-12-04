@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.entities.BtDevice
 
-class BtDevicesAdapter(private val btDevices: List<BtDevice>) : RecyclerView.Adapter<BtDeviceHolder>() {
+class BtDevicesAdapter(
+    private val btDevices: List<BtDevice>
+) : RecyclerView.Adapter<BtDeviceHolder>() {
 
     private var selectedDeviceMacAddress: String = ""
     private var selectedDeviceName: String = ""

@@ -3,8 +3,8 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.BtPauseTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.monitor.MonitorFragment
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.targets.BtPauseTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.MonitorHandleFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        showFragment(MonitorFragment())
+        showFragment(MonitorHandleFragment())
     }
 
     private fun showFragment(fragment: Fragment) {

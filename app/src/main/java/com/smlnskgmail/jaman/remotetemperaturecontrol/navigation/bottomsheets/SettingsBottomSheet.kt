@@ -1,8 +1,7 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtDisconnectTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.targets.BtDisconnectTarget
 import kotlinx.android.synthetic.main.bottom_sheet_settings.*
 
 class SettingsBottomSheet : BaseBottomSheet() {

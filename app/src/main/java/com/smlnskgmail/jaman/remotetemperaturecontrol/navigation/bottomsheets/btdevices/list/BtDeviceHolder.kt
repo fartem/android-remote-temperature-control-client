@@ -2,11 +2,13 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.b
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.entities.BtDevice
 import kotlinx.android.synthetic.main.item_bt_device.view.*
 
-class BtDeviceHolder(itemView: View, private val recyclerAdapterBt: BtDevicesAdapter)
-    : RecyclerView.ViewHolder(itemView) {
+class BtDeviceHolder(
+    itemView: View,
+    private val recyclerAdapterBt: BtDevicesAdapter
+) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(btDevice: BtDevice) {
         itemView.bt_device_name.text = btDevice.name

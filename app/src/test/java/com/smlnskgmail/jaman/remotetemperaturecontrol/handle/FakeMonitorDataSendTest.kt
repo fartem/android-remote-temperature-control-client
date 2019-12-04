@@ -1,18 +1,22 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.datasend
+package com.smlnskgmail.jaman.remotetemperaturecontrol.handle
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.FakeMonitorTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.datasend.data.FakeSignalTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.fakemonitor.FakeMonitor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.fakemonitor.FakeMonitorHandleTarget
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
-class DataSendTest {
+class FakeMonitorDataSendTest {
 
-    private val monitorTarget = FakeMonitorTarget()
-    private val signalTarget = FakeSignalTarget(monitorTarget)
+    private val monitorTarget =
+        FakeMonitorHandleTarget()
+    private val signalTarget =
+        FakeMonitor(
+            monitorTarget
+        )
 
     private val outputStream = ByteArrayOutputStream()
 
@@ -25,7 +29,7 @@ class DataSendTest {
     fun validateTemperatureSend() {
         val validResult = "34.5"
 
-        sendNewData(SignalType.Temperature, validResult)
+        sendNewData(MonitorSignalType.Temperature, validResult)
         checkOutput(validResult)
     }
 
@@ -33,7 +37,7 @@ class DataSendTest {
     fun validateTemperatureMinimumSend() {
         val validResult = "29.1"
 
-        sendNewData(SignalType.TemperatureMinimum, validResult)
+        sendNewData(MonitorSignalType.TemperatureMinimum, validResult)
         checkOutput(validResult)
     }
 
@@ -41,7 +45,7 @@ class DataSendTest {
     fun validateTemperatureMaximumSend() {
         val validResult = "35.9"
 
-        sendNewData(SignalType.TemperatureMaximum, validResult)
+        sendNewData(MonitorSignalType.TemperatureMaximum, validResult)
         checkOutput(validResult)
     }
 
@@ -49,7 +53,7 @@ class DataSendTest {
     fun validateHumiditySend() {
         val validResult = "74.2"
 
-        sendNewData(SignalType.Humidity, validResult)
+        sendNewData(MonitorSignalType.Humidity, validResult)
         checkOutput(validResult)
     }
 
@@ -57,7 +61,7 @@ class DataSendTest {
     fun validateHumidityMinimumSend() {
         val validResult = "54.6"
 
-        sendNewData(SignalType.HumidityMinimum, validResult)
+        sendNewData(MonitorSignalType.HumidityMinimum, validResult)
         checkOutput(validResult)
     }
 
@@ -65,7 +69,7 @@ class DataSendTest {
     fun validateHumidityMaximumSend() {
         val validResult = "89.3"
 
-        sendNewData(SignalType.HumidityMaximum, validResult)
+        sendNewData(MonitorSignalType.HumidityMaximum, validResult)
         checkOutput(validResult)
     }
 
@@ -73,12 +77,12 @@ class DataSendTest {
     fun validateResetRequiredSend() {
         val validResult = ""
 
-        sendNewData(SignalType.Reset, validResult)
+        sendNewData(MonitorSignalType.Reset, validResult)
         checkOutput(validResult)
     }
 
-    private fun sendNewData(signalType: SignalType, data: String) {
-        signalTarget.onNewDataAvailable(signalType, data)
+    private fun sendNewData(monitorSignalType: MonitorSignalType, data: String) {
+        signalTarget.onNewDataAvailable(monitorSignalType, data)
     }
 
     private fun checkOutput(validOutput: String) {

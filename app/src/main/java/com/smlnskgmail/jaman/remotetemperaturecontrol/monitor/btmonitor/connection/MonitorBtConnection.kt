@@ -1,19 +1,17 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection
+package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.Monitor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorSignalType
 import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
 
 class MonitorBtConnection(
-
     btAdapter: BluetoothAdapter,
     deviceMacAddress: String,
-    private val signalTarget: SignalTarget
-
+    private val monitor: Monitor
 ) : Thread() {
 
     private val btUuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
@@ -42,14 +40,14 @@ class MonitorBtConnection(
             val rawData = inputStream!!.bufferedReader().readLine()
             val signalType = MonitorDataExtractor.signalType(rawData)
             val data = MonitorDataExtractor.data(rawData)
-            signalTarget.onNewDataAvailable(signalType, data)
+            monitor.onNewDataAvailable(signalType, data)
         }
     }
 
     private fun inputStreamIsOpen() = inputStream!!.bufferedReader().ready()
 
-    fun send(signalType: SignalType) {
-        outputStream!!.write(SignalType.signalOf(signalType).toByteArray())
+    fun send(monitorSignalType: MonitorSignalType) {
+        outputStream!!.write(MonitorSignalType.signalOf(monitorSignalType).toByteArray())
     }
 
     fun connect() {

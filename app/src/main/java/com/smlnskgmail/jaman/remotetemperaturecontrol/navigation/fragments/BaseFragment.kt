@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.BtPauseTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.targets.BtPauseTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.BaseBottomSheet
 
-abstract class BaseFragment : Fragment(), BtPauseTarget {
+abstract class BaseFragment : Fragment(),
+    BtPauseTarget {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initializeFragment(view)
@@ -16,8 +17,11 @@ abstract class BaseFragment : Fragment(), BtPauseTarget {
 
     abstract fun initializeFragment(view: View)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
-            : View = inflater.inflate(getLayoutResId(), container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(getLayoutResId(), container, false)
 
     abstract fun getLayoutResId(): Int
 

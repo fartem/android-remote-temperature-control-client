@@ -1,29 +1,31 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.monitor
+package com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments
 
 import android.bluetooth.BluetoothAdapter
 import android.content.DialogInterface
 import android.view.View
 import android.widget.TextView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.Monitor
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.MonitorBtConnection
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtConnectTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.connection.support.BtDisconnectTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.BtDevice
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.entities.signaltype.SignalType
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.support.MonitorTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorHandleTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.BtMonitor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.MonitorBtConnection
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.entities.BtDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.targets.BtConnectTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.targets.BtDisconnectTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.SettingsBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.btdevices.BtDevicesBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.settings.SettingsBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.dialogs.AppDialog
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.BaseFragment
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
-class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDisconnectTarget {
+class MonitorHandleFragment : BaseFragment(),
+    MonitorHandleTarget,
+    BtConnectTarget,
+    BtDisconnectTarget {
 
     private var monitorBtConnection: MonitorBtConnection? = null
     private var btAdapter: BluetoothAdapter? = null
 
-    private var monitor: Monitor? = null
+    private var btMonitor: BtMonitor? = null
 
     override fun initializeFragment(view: View) {
         startMonitor()
@@ -34,7 +36,10 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
             btAdapter = BluetoothAdapter.getDefaultAdapter()
             val btDevices = getBtDevices()
             if (btDevices.isNotEmpty()) {
-                monitor = Monitor(this)
+                btMonitor =
+                    BtMonitor(
+                        this
+                    )
                 showDevicesList(btDevices)
             } else {
                 showBtDevicesNotFoundWarning()
@@ -56,7 +61,9 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
 
     private fun getBtDevices(): List<BtDevice> {
         val bondedDevices= btAdapter!!.bondedDevices
-        return bondedDevices.mapTo(ArrayList(bondedDevices.size)) { BtDevice(it.name, it.address) }
+        return bondedDevices.mapTo(ArrayList(bondedDevices.size)) {
+            BtDevice(it.name, it.address)
+        }
     }
 
     override fun temperatureAvailable(data: String) {
@@ -107,7 +114,7 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
     }
 
     override fun onBtDeviceSelected(name: String, address: String) {
-        monitorBtConnection = MonitorBtConnection(btAdapter!!, address, monitor!!)
+        monitorBtConnection = MonitorBtConnection(btAdapter!!, address, btMonitor!!)
         monitorBtConnection!!.connect()
         monitorBtConnection!!.start()
         setDeviceName(name)
@@ -119,22 +126,32 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
     }
 
     private fun showBtDisabledWarning() {
-        AppDialog.show(context!!, R.string.title_warning, R.string.message_bt_is_disabled,
-            R.string.action_exit, DialogInterface.OnClickListener { _, _ ->
+        AppDialog.show(
+            context!!,
+            R.string.title_warning,
+            R.string.message_bt_is_disabled,
+            R.string.action_exit,
+            DialogInterface.OnClickListener { _, _ ->
                 activity!!.finish()
-            })
+            }
+        )
     }
 
     private fun showBtDevicesNotFoundWarning() {
-        AppDialog.show(context!!, R.string.title_warning, R.string.message_no_available_devices,
-            R.string.action_exit, DialogInterface.OnClickListener { _, _ ->
+        AppDialog.show(
+            context!!,
+            R.string.title_warning,
+            R.string.message_no_available_devices,
+            R.string.action_exit,
+            DialogInterface.OnClickListener { _, _ ->
                 activity!!.finish()
-            })
+            }
+        )
     }
 
     private fun initializeButtons() {
         btn_reset_monitor.setOnClickListener {
-            monitorBtConnection!!.send(SignalType.Reset)
+            monitorBtConnection!!.send(MonitorSignalType.Reset)
         }
         btn_main_options.setOnClickListener {
             showSettings()
@@ -142,7 +159,8 @@ class MonitorFragment : BaseFragment(), MonitorTarget, BtConnectTarget, BtDiscon
     }
 
     private fun showSettings() {
-        val settingsBottomSheet = SettingsBottomSheet()
+        val settingsBottomSheet =
+            SettingsBottomSheet()
         settingsBottomSheet.setBtDisconnectListener(this)
         showBottomSheet(settingsBottomSheet)
     }
