@@ -15,7 +15,7 @@ class BtDevicesBottomSheet : BaseBottomSheet() {
     override fun initialize() {
         devices.adapter = BtDevicesAdapter(btDevices)
         select_device.setOnClickListener {
-            val adapter = (devices.adapter as BtDevicesAdapter)
+            val adapter = devices.adapter as BtDevicesAdapter
             btConnectTarget?.onBtDeviceSelected(
                 adapter.getSelectedDeviceName(),
                 adapter.getSelectedDeviceMacAddress()

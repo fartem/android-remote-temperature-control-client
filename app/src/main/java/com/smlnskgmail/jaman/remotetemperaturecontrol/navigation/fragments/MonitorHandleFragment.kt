@@ -17,6 +17,7 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.bt
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.dialogs.AppDialog
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
+@SuppressWarnings("TooManyFunctions")
 class MonitorHandleFragment : BaseFragment(), MonitorHandleTarget {
 
     private var monitorBtConnection: MonitorBtConnection? = null
