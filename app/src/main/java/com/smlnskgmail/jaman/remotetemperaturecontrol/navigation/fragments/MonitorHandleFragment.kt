@@ -17,10 +17,7 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.bottomsheets.bt
 import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.dialogs.AppDialog
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
-class MonitorHandleFragment : BaseFragment(),
-    MonitorHandleTarget,
-    BtConnectTarget,
-    BtDisconnectTarget {
+class MonitorHandleFragment : BaseFragment(), MonitorHandleTarget {
 
     private var monitorBtConnection: MonitorBtConnection? = null
     private var btAdapter: BluetoothAdapter? = null
@@ -28,18 +25,15 @@ class MonitorHandleFragment : BaseFragment(),
     private var btMonitor: BtMonitor? = null
 
     override fun initializeFragment(view: View) {
-        startMonitor()
+        enableMonitor()
     }
 
-    private fun startMonitor() {
+    private fun enableMonitor() {
         if (btIsEnabled()) {
             btAdapter = BluetoothAdapter.getDefaultAdapter()
             val btDevices = getBtDevices()
             if (btDevices.isNotEmpty()) {
-                btMonitor =
-                    BtMonitor(
-                        this
-                    )
+                btMonitor = BtMonitor(this)
                 showDevicesList(btDevices)
             } else {
                 showBtDevicesNotFoundWarning()
@@ -54,7 +48,19 @@ class MonitorHandleFragment : BaseFragment(),
     private fun showDevicesList(btDevices: List<BtDevice>) {
         val devicesBottomSheet = BtDevicesBottomSheet()
         devicesBottomSheet.setBtDevices(btDevices)
-        devicesBottomSheet.setBtDeviceSelectCallback(this)
+        devicesBottomSheet.setBtDeviceSelectCallback(object : BtConnectTarget {
+            override fun onBtDeviceSelected(name: String, address: String) {
+                monitorBtConnection = MonitorBtConnection(
+                    btAdapter!!,
+                    address,
+                    btMonitor!!
+                )
+                monitorBtConnection!!.connect()
+                monitorBtConnection!!.start()
+                setDeviceName(name)
+                initializeButtons()
+            }
+        })
         devicesBottomSheet.isCancelable = false
         showBottomSheet(devicesBottomSheet)
     }
@@ -113,14 +119,6 @@ class MonitorHandleFragment : BaseFragment(),
         }
     }
 
-    override fun onBtDeviceSelected(name: String, address: String) {
-        monitorBtConnection = MonitorBtConnection(btAdapter!!, address, btMonitor!!)
-        monitorBtConnection!!.connect()
-        monitorBtConnection!!.start()
-        setDeviceName(name)
-        initializeButtons()
-    }
-
     private fun setDeviceName(name: String) {
         tv_connected_device_info.text = name
     }
@@ -159,16 +157,15 @@ class MonitorHandleFragment : BaseFragment(),
     }
 
     private fun showSettings() {
-        val settingsBottomSheet =
-            SettingsBottomSheet()
-        settingsBottomSheet.setBtDisconnectListener(this)
+        val settingsBottomSheet = SettingsBottomSheet()
+        settingsBottomSheet.setBtDisconnectListener(object : BtDisconnectTarget {
+            override fun btDisconnect() {
+                monitorBtConnection!!.disconnect()
+                resetRequired()
+                enableMonitor()
+            }
+        })
         showBottomSheet(settingsBottomSheet)
-    }
-
-    override fun btDisconnect() {
-        monitorBtConnection!!.disconnect()
-        resetRequired()
-        startMonitor()
     }
 
     override fun handleBtInOnPause() {

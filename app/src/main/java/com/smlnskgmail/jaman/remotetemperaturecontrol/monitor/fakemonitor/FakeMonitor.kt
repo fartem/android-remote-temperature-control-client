@@ -4,10 +4,12 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.Monitor
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorHandleTarget
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorSignalType
 
-class FakeMonitor(private val monitorHandleTarget: MonitorHandleTarget) :
-    Monitor {
+class FakeMonitor(private val monitorHandleTarget: MonitorHandleTarget) : Monitor {
 
-    override fun onNewDataAvailable(monitorSignalType: MonitorSignalType, rawData: String) {
+    override fun onNewDataAvailable(
+        monitorSignalType: MonitorSignalType,
+        rawData: String
+    ) {
         when (monitorSignalType) {
             MonitorSignalType.Temperature -> {
                 monitorHandleTarget.temperatureAvailable(rawData)

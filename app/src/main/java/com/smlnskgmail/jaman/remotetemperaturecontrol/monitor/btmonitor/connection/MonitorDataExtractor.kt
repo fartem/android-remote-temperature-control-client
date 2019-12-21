@@ -5,7 +5,10 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorSignalType
 object MonitorDataExtractor {
 
     fun signalType(rawData: String): MonitorSignalType {
-        return MonitorSignalType.fromRawData(rawData)
+        if (rawData.isNotEmpty()) {
+            return MonitorSignalType.fromRawData(rawData)
+        }
+        return MonitorSignalType.Other
     }
 
     fun data(rawData: String): String {

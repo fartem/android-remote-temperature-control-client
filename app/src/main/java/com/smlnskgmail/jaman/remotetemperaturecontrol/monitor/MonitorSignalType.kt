@@ -14,19 +14,15 @@ enum class MonitorSignalType {
     companion object {
 
         fun fromRawData(rawData: String): MonitorSignalType {
-            return if (rawData.isNotEmpty()) {
-                when (rawData[0].toString()) {
-                    "t" -> Temperature
-                    "i" -> TemperatureMinimum
-                    "m" -> TemperatureMaximum
-                    "h" -> Humidity
-                    "q" -> HumidityMinimum
-                    "w" -> HumidityMaximum
-                    "r" -> Reset
-                    else -> Other
-                }
-            } else {
-                Other
+            return when (rawData[0].toString()) {
+                "t" -> Temperature
+                "i" -> TemperatureMinimum
+                "m" -> TemperatureMaximum
+                "h" -> Humidity
+                "q" -> HumidityMinimum
+                "w" -> HumidityMaximum
+                "r" -> Reset
+                else -> Other
             }
         }
 

@@ -21,12 +21,15 @@ abstract class BaseFragment : Fragment(),
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(getLayoutResId(), container, false)
+    ) : View = inflater.inflate(getLayoutResId(), container, false)
 
     abstract fun getLayoutResId(): Int
 
     fun showBottomSheet(bottomSheet: BaseBottomSheet) {
-        bottomSheet.show(activity!!.supportFragmentManager, bottomSheet::class.java.name)
+        bottomSheet.show(
+            activity!!.supportFragmentManager,
+            bottomSheet::class.java.name
+        )
     }
 
     override fun handleBtInOnPause() {}

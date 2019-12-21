@@ -2,8 +2,7 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.fakemonitor
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorHandleTarget
 
-class FakeMonitorHandleTarget :
-    MonitorHandleTarget {
+class FakeMonitorHandleTarget : MonitorHandleTarget {
 
     override fun temperatureAvailable(data: String) {
         printText(data)

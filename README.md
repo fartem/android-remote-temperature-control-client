@@ -3,6 +3,7 @@
 Android Remote Temperature Control Client
 =======================
 
+![Travis CI](https://img.shields.io/travis/fartem/android-remote-temperature-control-client?style=flat-square)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-site-brightgreen?style=flat-square)](https://android-arsenal.com/details/3/7943)
 ![Open issues](https://img.shields.io/github/issues-raw/fartem/android-remote-temperature-control-client.svg?color=ff534a&style=flat-square)
 
