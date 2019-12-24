@@ -19,8 +19,7 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.settings.SettingsBot
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
 @SuppressWarnings("TooManyFunctions")
-class MonitorHandleFragment : BaseFragment(),
-    MonitorHandleTarget {
+class MonitorHandleFragment : BaseFragment(), MonitorHandleTarget {
 
     private var monitorBtConnection: MonitorBtConnection? = null
     private var btAdapter: BluetoothAdapter? = null

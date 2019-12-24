@@ -16,22 +16,34 @@ class BtMonitor(
     ) {
         when(monitorSignalType) {
             MonitorSignalType.Temperature -> {
-                setTemperature(rawData)
+                monitorHandleTarget.temperatureAvailable(
+                    temperatureResult(rawData)
+                )
             }
             MonitorSignalType.TemperatureMaximum -> {
-                setTemperatureMaximum(rawData)
+                monitorHandleTarget.temperatureMaximumAvailable(
+                    temperatureResult(rawData)
+                )
             }
             MonitorSignalType.TemperatureMinimum -> {
-                setTemperatureMinimum(rawData)
+                monitorHandleTarget.temperatureMinimumAvailable(
+                    temperatureResult(rawData)
+                )
             }
             MonitorSignalType.Humidity -> {
-                setHumidity(rawData)
+                monitorHandleTarget.humidityAvailable(
+                    humidityResult(rawData)
+                )
             }
             MonitorSignalType.HumidityMaximum -> {
-                setHumidityMaximum(rawData)
+                monitorHandleTarget.humidityMaximumAvailable(
+                    humidityResult(rawData)
+                )
             }
             MonitorSignalType.HumidityMinimum -> {
-                setHumidityMinimum(rawData)
+                monitorHandleTarget.humidityMinimumAvailable(
+                    humidityResult(rawData)
+                )
             }
             MonitorSignalType.Reset -> {
                 monitorHandleTarget.resetRequired()
@@ -39,44 +51,8 @@ class BtMonitor(
         }
     }
 
-    private fun setTemperature(rawData: String) {
-        monitorHandleTarget.temperatureAvailable(
-            temperatureResult(rawData)
-        )
-    }
-
-    private fun setTemperatureMaximum(rawData: String) {
-        monitorHandleTarget.temperatureMaximumAvailable(
-            temperatureResult(rawData)
-        )
-    }
-
-    private fun setTemperatureMinimum(rawData: String) {
-        monitorHandleTarget.temperatureMinimumAvailable(
-            temperatureResult(rawData)
-        )
-    }
-
     private fun temperatureResult(rawData: String)
             = formattedResult(rawData, "C")
-
-    private fun setHumidity(rawData: String) {
-        monitorHandleTarget.humidityAvailable(
-            humidityResult(rawData)
-        )
-    }
-
-    private fun setHumidityMaximum(rawData: String) {
-        monitorHandleTarget.humidityMaximumAvailable(
-            humidityResult(rawData)
-        )
-    }
-
-    private fun setHumidityMinimum(rawData: String) {
-        monitorHandleTarget.humidityMinimumAvailable(
-            humidityResult(rawData)
-        )
-    }
 
     private fun humidityResult(rawData: String)
             = formattedResult(rawData, "%")
