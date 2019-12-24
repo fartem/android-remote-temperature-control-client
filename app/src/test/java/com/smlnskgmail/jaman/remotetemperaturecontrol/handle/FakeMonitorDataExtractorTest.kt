@@ -1,7 +1,7 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.handle
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorSignalType
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.MonitorDataExtractor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.MonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.btmonitor.connection.MonitorDataExtractor
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

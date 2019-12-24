@@ -3,14 +3,10 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.btmonitor.connection.targets.BtPauseTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.navigation.fragments.MonitorHandleFragment
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.btmonitor.connection.targets.BtPauseTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.ui.MonitorHandleFragment
 
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        private const val CURRENT_FRAGMENT_TAG = "current_fragment"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +30,12 @@ class MainActivity : AppCompatActivity() {
         if (currentFragment != null && currentFragment is BtPauseTarget) {
             currentFragment.handleBtInOnPause()
         }
+    }
+
+    companion object {
+
+        private const val CURRENT_FRAGMENT_TAG = "current_fragment"
+
     }
 
 }

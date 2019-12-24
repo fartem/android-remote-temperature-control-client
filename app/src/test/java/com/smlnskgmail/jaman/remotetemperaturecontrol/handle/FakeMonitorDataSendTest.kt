@@ -1,8 +1,8 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.handle
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.MonitorSignalType
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.fakemonitor.FakeMonitor
-import com.smlnskgmail.jaman.remotetemperaturecontrol.monitor.fakemonitor.FakeMonitorHandleTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.handle.fakemonitor.FakeMonitor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.handle.fakemonitor.FakeMonitorHandleTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.MonitorSignalType
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
