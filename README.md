@@ -1,4 +1,4 @@
-<img src="media/ic_app.png" height="100px" />
+<img src="media/logo/ic_app.png" height="100px" />
 
 Android Remote Temperature Control Client
 =======================
