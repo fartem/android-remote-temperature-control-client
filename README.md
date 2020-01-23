@@ -20,6 +20,12 @@ Before start
 2. pair your Android device and Arduino Bluetooth module;
 3. install and run Android application and select Arduino Bluetooth module from devices list.
 
+Download
+-------------
+
+<img src="media/qrcodes/github_download.png" height="150px" />
+
+
 Screenshots
 -------------
 
