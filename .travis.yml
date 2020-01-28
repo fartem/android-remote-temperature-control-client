@@ -21,4 +21,5 @@ before_install:
 
 script:
   - ./gradlew detekt
+  - ./gradlew cpdCheck
   - ./gradlew test
