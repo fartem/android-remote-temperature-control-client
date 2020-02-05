@@ -1,6 +1,6 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor
+package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api
 
-interface MonitorHandleTarget {
+interface BtMonitorTarget {
 
     fun temperatureAvailable(data: String)
     fun temperatureMaximumAvailable(data: String)

@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.deviceselector.recy
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.btmonitor.connection.entities.BtDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entities.BtDevice
 import kotlinx.android.synthetic.main.item_bt_device.view.*
 
 class BtDeviceHolder(

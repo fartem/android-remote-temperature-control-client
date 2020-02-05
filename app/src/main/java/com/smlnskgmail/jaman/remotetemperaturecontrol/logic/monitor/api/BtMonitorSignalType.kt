@@ -1,6 +1,6 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor
+package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api
 
-enum class MonitorSignalType {
+enum class BtMonitorSignalType {
 
     Temperature,
     TemperatureMinimum,
@@ -13,7 +13,7 @@ enum class MonitorSignalType {
 
     companion object {
 
-        fun fromRawData(rawData: String): MonitorSignalType {
+        fun fromRawData(rawData: String): BtMonitorSignalType {
             return when (rawData[0].toString()) {
                 "t" -> Temperature
                 "i" -> TemperatureMinimum
@@ -26,8 +26,8 @@ enum class MonitorSignalType {
             }
         }
 
-        fun signalOf(monitorSignalType: MonitorSignalType): String {
-            return when (monitorSignalType) {
+        fun signalOf(btMonitorSignalType: BtMonitorSignalType): String {
+            return when (btMonitorSignalType) {
                 Temperature -> "t"
                 TemperatureMinimum -> "i"
                 TemperatureMaximum -> "m"

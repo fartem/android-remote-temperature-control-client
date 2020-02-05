@@ -1,18 +1,19 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.btmonitor.connection
+package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.impl.devicebt
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.Monitor
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.MonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtConnection
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
 import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
 
-class MonitorBtConnection(
+class DeviceBtConnection(
     btAdapter: BluetoothAdapter,
     deviceMacAddress: String,
-    private val monitor: Monitor
-) : Thread() {
+    private val btMonitor: BtMonitor
+) : BtConnection() {
 
     private val btUuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
@@ -38,19 +39,25 @@ class MonitorBtConnection(
     private fun read() {
         if (inputStreamIsOpen()) {
             val rawData = inputStream!!.bufferedReader().readLine()
-            val signalType = MonitorDataExtractor.signalType(rawData)
-            val data = MonitorDataExtractor.data(rawData)
-            monitor.onNewDataAvailable(signalType, data)
+            val signalType =
+                DeviceBtDataExtractor.signalType(
+                    rawData
+                )
+            val data =
+                DeviceBtDataExtractor.data(
+                    rawData
+                )
+            btMonitor.onNewDataAvailable(signalType, data)
         }
     }
 
     private fun inputStreamIsOpen() = inputStream!!.bufferedReader().ready()
 
-    fun send(monitorSignalType: MonitorSignalType) {
-        outputStream!!.write(MonitorSignalType.signalOf(monitorSignalType).toByteArray())
+    override fun send(btMonitorSignalType: BtMonitorSignalType) {
+        outputStream!!.write(BtMonitorSignalType.signalOf(btMonitorSignalType).toByteArray())
     }
 
-    fun connect() {
+    override fun connect() {
         if (!btSocket!!.isConnected) {
             btSocket!!.connect()
             inputStream = btSocket!!.inputStream
@@ -58,7 +65,7 @@ class MonitorBtConnection(
         }
     }
 
-    fun disconnect() {
+    override fun disconnect() {
         if (btSocket!!.isConnected) {
             isRunning = false
             btSocket!!.close()
@@ -71,7 +78,7 @@ class MonitorBtConnection(
         }
     }
 
-    fun handleOnResume() {
+    override fun handleOnResume() {
         if (outputStream != null) {
             outputStream!!.flush()
         }

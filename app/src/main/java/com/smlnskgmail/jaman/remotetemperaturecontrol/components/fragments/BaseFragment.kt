@@ -6,15 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.btmonitor.connection.targets.BtPauseTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entities.targets.BtPauseTarget
 
 abstract class BaseFragment : Fragment(), BtPauseTarget {
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initializeFragment(view)
-    }
-
-    abstract fun initializeFragment(view: View)
 
     override fun onCreateView(
         inflater: LayoutInflater,

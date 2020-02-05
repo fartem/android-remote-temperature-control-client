@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.btmonitor.connection.entities
+package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entities
 
 data class BtDevice(
     val name: String,

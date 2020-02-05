@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.btmonitor.connection.entities.BtDevice
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entities.BtDevice
 
 class BtDevicesAdapter(
     private val btDevices: List<BtDevice>
