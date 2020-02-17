@@ -4,14 +4,16 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonito
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorTarget
 
-class FakeMonitor(private val btMonitorTarget: BtMonitorTarget) :
-    BtMonitor {
+class FakeMonitor(
+    private val btMonitorTarget: BtMonitorTarget
+) : BtMonitor {
 
     override fun onNewDataAvailable(
-        btMonitorSignalType: BtMonitorSignalType,
+        signalType: BtMonitorSignalType,
         rawData: String
     ) {
-        when (btMonitorSignalType) {
+        @Suppress("NON_EXHAUSTIVE_WHEN")
+        when (signalType) {
             BtMonitorSignalType.Temperature -> {
                 btMonitorTarget.temperatureAvailable(rawData)
             }

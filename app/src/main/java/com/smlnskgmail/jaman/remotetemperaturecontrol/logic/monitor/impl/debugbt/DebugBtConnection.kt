@@ -1,12 +1,13 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.impl.debugbt
 
+import android.util.Log
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtConnection
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitor
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
 
 class DebugBtConnection(
     private val btMonitor: BtMonitor
-) : BtConnection() {
+) : BtConnection {
 
     companion object {
 
@@ -40,11 +41,13 @@ class DebugBtConnection(
 
     private var loopCounter = 0
 
-    override fun run() {
-        super.run()
+    override fun connect() {
+        writeLog(
+            "Debug Monitor: connect()"
+        )
         while (true) {
             @Suppress("MagicNumber")
-            sleep(5_000)
+            Thread.sleep(5_000)
             btMonitor.onNewDataAvailable(
                 BtMonitorSignalType.Temperature,
                 temperature[loopCounter]
@@ -75,6 +78,31 @@ class DebugBtConnection(
                 loopCounter = 0
             }
         }
+    }
+
+    private fun writeLog(message: String) {
+        Log.i(
+            "MONITOR",
+            message
+        )
+    }
+
+    override fun disconnect() {
+        writeLog(
+            "Debug Monitor: disconnect()"
+        )
+    }
+
+    override fun handleOnResume() {
+        writeLog(
+            "Debug Monitor: handleOnResume()"
+        )
+    }
+
+    override fun send(btMonitorSignalType: BtMonitorSignalType) {
+        writeLog(
+            "Debug Monitor: send(${btMonitorSignalType})"
+        )
     }
 
 }

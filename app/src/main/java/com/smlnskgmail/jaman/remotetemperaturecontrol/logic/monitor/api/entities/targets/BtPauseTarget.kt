@@ -2,6 +2,6 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entitie
 
 interface BtPauseTarget {
 
-    fun handleBtInOnPause()
+    fun btOnPause()
 
 }

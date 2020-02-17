@@ -2,6 +2,9 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entitie
 
 interface BtConnectTarget {
 
-    fun onBtDeviceSelected(name: String, address: String)
+    fun onBtDeviceSelected(
+        name: String,
+        address: String
+    )
 
 }

@@ -13,9 +13,11 @@ class DeviceBtConnection(
     btAdapter: BluetoothAdapter,
     deviceMacAddress: String,
     private val btMonitor: BtMonitor
-) : BtConnection() {
+) : BtConnection {
 
-    private val btUuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+    private val btUuid = UUID.fromString(
+        "00001101-0000-1000-8000-00805F9B34FB"
+    )
 
     private var btSocket: BluetoothSocket?
 
@@ -29,32 +31,14 @@ class DeviceBtConnection(
         btSocket = btDevice.createRfcommSocketToServiceRecord(btUuid)
     }
 
-    override fun run() {
-        runRead()
-        while (canRead()) {
-            read()
-        }
-    }
-
-    private fun read() {
-        if (inputStreamIsOpen()) {
-            val rawData = inputStream!!.bufferedReader().readLine()
-            val signalType =
-                DeviceBtDataExtractor.signalType(
-                    rawData
-                )
-            val data =
-                DeviceBtDataExtractor.data(
-                    rawData
-                )
-            btMonitor.onNewDataAvailable(signalType, data)
-        }
-    }
-
     private fun inputStreamIsOpen() = inputStream!!.bufferedReader().ready()
 
     override fun send(btMonitorSignalType: BtMonitorSignalType) {
-        outputStream!!.write(BtMonitorSignalType.signalOf(btMonitorSignalType).toByteArray())
+        outputStream!!.write(
+            DeviceBtDataExtractor.signalOf(
+                btMonitorSignalType
+            ).toByteArray()
+        )
     }
 
     override fun connect() {
@@ -63,7 +47,24 @@ class DeviceBtConnection(
             inputStream = btSocket!!.inputStream
             outputStream = btSocket!!.outputStream
         }
+        runRead()
+        while (canRead()) {
+            read()
+        }
     }
+    private fun read() {
+        if (inputStreamIsOpen()) {
+            val rawData = inputStream!!.bufferedReader().readLine()
+            val signalType = DeviceBtDataExtractor.signalType(
+                rawData
+            )
+            val data = DeviceBtDataExtractor.data(
+                rawData
+            )
+            btMonitor.onNewDataAvailable(signalType, data)
+        }
+    }
+
 
     override fun disconnect() {
         if (btSocket!!.isConnected) {

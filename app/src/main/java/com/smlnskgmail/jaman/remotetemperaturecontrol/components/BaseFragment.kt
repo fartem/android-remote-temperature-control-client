@@ -1,11 +1,10 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.components.fragments
+package com.smlnskgmail.jaman.remotetemperaturecontrol.components
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.bottomsheets.BaseBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entities.targets.BtPauseTarget
 
 abstract class BaseFragment : Fragment(), BtPauseTarget {
@@ -14,7 +13,11 @@ abstract class BaseFragment : Fragment(), BtPauseTarget {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) : View = inflater.inflate(getLayoutResId(), container, false)
+    ) : View = inflater.inflate(
+        getLayoutResId(),
+        container,
+        false
+    )
 
     abstract fun getLayoutResId(): Int
 
@@ -25,6 +28,6 @@ abstract class BaseFragment : Fragment(), BtPauseTarget {
         )
     }
 
-    override fun handleBtInOnPause() {}
+    override fun btOnPause() {}
 
 }

@@ -9,11 +9,11 @@ class DebugBtMonitor(
 ) : BtMonitor {
 
     override fun onNewDataAvailable(
-        btMonitorSignalType: BtMonitorSignalType,
+        signalType: BtMonitorSignalType,
         rawData: String
     ) {
         @Suppress("UseCheckOrError")
-        when (btMonitorSignalType) {
+        when (signalType) {
             BtMonitorSignalType.Temperature -> {
                 btMonitorTarget.temperatureAvailable(
                     rawData
@@ -45,7 +45,7 @@ class DebugBtMonitor(
                 )
             }
             else -> throw IllegalStateException(
-                "DebugMonitor cannot support $btMonitorSignalType!"
+                "DebugMonitor cannot support $signalType!"
             )
         }
     }

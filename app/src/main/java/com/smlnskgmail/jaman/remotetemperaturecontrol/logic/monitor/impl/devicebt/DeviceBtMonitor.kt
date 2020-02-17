@@ -11,10 +11,10 @@ class DeviceBtMonitor(
 
     @Suppress("NON_EXHAUSTIVE_WHEN")
     override fun onNewDataAvailable(
-        btMonitorSignalType: BtMonitorSignalType,
+        signalType: BtMonitorSignalType,
         rawData: String
     ) {
-        when(btMonitorSignalType) {
+        when(signalType) {
             BtMonitorSignalType.Temperature -> {
                 btMonitorTarget.temperatureAvailable(
                     temperatureResult(rawData)

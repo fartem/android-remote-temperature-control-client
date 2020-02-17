@@ -1,21 +1,11 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api
 
-abstract class BtConnection : Thread() {
+interface BtConnection {
 
-    open fun connect() {
+    fun connect()
+    fun disconnect()
+    fun handleOnResume()
 
-    }
-
-    open fun disconnect() {
-
-    }
-
-    open fun handleOnResume() {
-
-    }
-
-    open fun send(btMonitorSignalType: BtMonitorSignalType) {
-
-    }
+    fun send(btMonitorSignalType: BtMonitorSignalType)
 
 }

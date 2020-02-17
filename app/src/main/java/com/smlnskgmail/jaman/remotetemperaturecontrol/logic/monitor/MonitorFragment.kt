@@ -6,9 +6,10 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.smlnskgmail.jaman.remotetemperaturecontrol.BuildConfig
 import com.smlnskgmail.jaman.remotetemperaturecontrol.R
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.dialogs.AppDialog
-import com.smlnskgmail.jaman.remotetemperaturecontrol.components.fragments.BaseFragment
+import com.smlnskgmail.jaman.remotetemperaturecontrol.components.AppDialog
+import com.smlnskgmail.jaman.remotetemperaturecontrol.components.BaseFragment
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.deviceselector.BtDevicesBottomSheet
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtConnection
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitor
@@ -32,31 +33,45 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
 
     private var btMonitor: BtMonitor? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (btIsEnabled()) {
-            btAdapter = BluetoothAdapter.getDefaultAdapter()
-            val btDevices = getBtDevices()
-            if (btDevices.isNotEmpty()) {
-                btMonitor = DeviceBtMonitor(this)
-                showDevicesList(btDevices)
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        if (BuildConfig.API_IMPL == "DEVICE_BT") {
+            if (btIsEnabled()) {
+                btAdapter = BluetoothAdapter.getDefaultAdapter()
+                val btDevices = getBtDevices()
+                if (btDevices.isNotEmpty()) {
+                    btMonitor = DeviceBtMonitor(this)
+                    showDevicesList(btDevices)
+                } else {
+                    showBtDevicesNotFoundWarning()
+                }
             } else {
-                showBtDevicesNotFoundWarning()
+                showBtDisabledWarning()
             }
         } else {
-            showBtDisabledWarning()
+            startInDebugMode()
+            initializeButtons()
         }
     }
 
     @SuppressLint("SetTextI18n")
-    @Suppress("unused")
     private fun startInDebugMode() {
         btMonitor = DebugBtMonitor(this)
         monitorBtConnection = DebugBtConnection(btMonitor!!)
-        monitorBtConnection!!.start()
+        startMonitorThread()
 
         tv_connected_device_info.text = "DEBUG"
-        btn_main_options.isEnabled = false
-        btn_reset_monitor.isEnabled = false
+    }
+
+    private fun startMonitorThread() {
+        object : Thread() {
+            override fun run() {
+                super.run()
+                monitorBtConnection!!.connect()
+            }
+        }.start()
     }
 
     private fun btIsEnabled() = true
@@ -65,14 +80,16 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
         val devicesBottomSheet = BtDevicesBottomSheet()
         devicesBottomSheet.setBtDevices(btDevices)
         devicesBottomSheet.setBtDeviceSelectCallback(object : BtConnectTarget {
-            override fun onBtDeviceSelected(name: String, address: String) {
+            override fun onBtDeviceSelected(
+                name: String,
+                address: String
+            ) {
                 monitorBtConnection = DeviceBtConnection(
                     btAdapter!!,
                     address,
                     btMonitor!!
                 )
-                monitorBtConnection!!.connect()
-                monitorBtConnection!!.start()
+                startMonitorThread()
                 setDeviceName(name)
                 initializeButtons()
             }
@@ -132,7 +149,10 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
         }
     }
 
-    private fun setTextOnUIThread(textView: TextView, text: String) {
+    private fun setTextOnUIThread(
+        textView: TextView,
+        text: String
+    ) {
         activity!!.runOnUiThread {
             textView.text = text
         }
@@ -186,7 +206,7 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
         showBottomSheet(settingsBottomSheet)
     }
 
-    override fun handleBtInOnPause() {
+    override fun btOnPause() {
         monitorBtConnection!!.handleOnResume()
     }
 

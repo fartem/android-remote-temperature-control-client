@@ -9,53 +9,82 @@ class MonitorDataExtractorTest {
 
     @Test
     fun validateTemperatureParse() {
-        checkValidation(BtMonitorSignalType.Temperature)
+        checkValidation(
+            BtMonitorSignalType.Temperature
+        )
     }
 
     @Test
     fun validateTemperatureMinimumParse() {
-        checkValidation(BtMonitorSignalType.TemperatureMinimum)
+        checkValidation(
+            BtMonitorSignalType.TemperatureMinimum
+        )
     }
 
     @Test
     fun validateTemperatureMaximumParse() {
-        checkValidation(BtMonitorSignalType.TemperatureMaximum)
+        checkValidation(
+            BtMonitorSignalType.TemperatureMaximum
+        )
     }
 
     @Test
     fun validateHumidityParse() {
-        checkValidation(BtMonitorSignalType.Humidity)
+        checkValidation(
+            BtMonitorSignalType.Humidity
+        )
     }
 
     @Test
     fun validateHumidityMinimumParse() {
-        checkValidation(BtMonitorSignalType.HumidityMinimum)
+        checkValidation(
+            BtMonitorSignalType.HumidityMinimum
+        )
     }
 
     @Test
     fun validateHumidityMaximumParse() {
-        checkValidation(BtMonitorSignalType.HumidityMaximum)
+        checkValidation(
+            BtMonitorSignalType.HumidityMaximum
+        )
     }
 
     @Test
     fun validateResetRequired() {
-        checkValidation(BtMonitorSignalType.Reset, "")
+        checkValidation(
+            BtMonitorSignalType.Reset,
+            ""
+        )
     }
 
     private fun checkValidation(
         btMonitorSignalType: BtMonitorSignalType,
         cleanResult: String = DEFAULT_CLEAN_RESULT
     ) {
-        val rawData = rawData(BtMonitorSignalType.signalOf(btMonitorSignalType), cleanResult)
+        val rawData = rawData(
+            DeviceBtDataExtractor.signalOf(
+                btMonitorSignalType
+            ),
+            cleanResult
+        )
 
         val parsedSignalType = DeviceBtDataExtractor.signalType(rawData)
-        assertEquals(parsedSignalType, btMonitorSignalType)
+        assertEquals(
+            parsedSignalType,
+            btMonitorSignalType
+        )
 
         val parsedData = DeviceBtDataExtractor.data(rawData)
-        assertEquals(parsedData, cleanResult)
+        assertEquals(
+            parsedData,
+            cleanResult
+        )
     }
 
-    private fun rawData(signalType: String, cleanResult: String): String {
+    private fun rawData(
+        signalType: String,
+        cleanResult: String
+    ): String {
         return String.format("%s%s", signalType, cleanResult)
     }
 
