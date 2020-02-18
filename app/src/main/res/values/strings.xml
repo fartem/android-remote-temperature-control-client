@@ -23,4 +23,9 @@
     <!-- Messages -->
     <string name="message_bt_is_disabled">Bluetooth is disabled on this device! Please enable Bluetooth and restart app</string>
     <string name="message_no_available_devices">Cannot find available Bluetooth devices! Please add specified Bluetooth device and restart app</string>
+
+    <!-- Bluetooth error dialog -->
+    <string name="bluetooth_error_dialog_title">Error</string>
+    <string name="bluetooth_error_dialog_message">Enable Bluetooth and run app again</string>
+    <string name="bluetooth_error_dialog_button_text">Exit</string>
 </resources>

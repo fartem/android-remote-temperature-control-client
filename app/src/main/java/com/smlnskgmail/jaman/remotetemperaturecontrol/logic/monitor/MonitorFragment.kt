@@ -37,23 +37,41 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
         view: View,
         savedInstanceState: Bundle?
     ) {
-        if (BuildConfig.API_IMPL == "DEVICE_BT") {
-            if (btIsEnabled()) {
-                btAdapter = BluetoothAdapter.getDefaultAdapter()
-                val btDevices = getBtDevices()
-                if (btDevices.isNotEmpty()) {
-                    btMonitor = DeviceBtMonitor(this)
-                    showDevicesList(btDevices)
+        btAdapter = BluetoothAdapter.getDefaultAdapter()
+        if (bluetoothIsEnabled()) {
+            @Suppress("ConstantConditionIf")
+            if (BuildConfig.API_IMPL == "DEVICE_BT") {
+                if (btIsEnabled()) {
+                    val btDevices = getBtDevices()
+                    if (btDevices.isNotEmpty()) {
+                        btMonitor = DeviceBtMonitor(this)
+                        showDevicesList(btDevices)
+                    } else {
+                        showBtDevicesNotFoundWarning()
+                    }
                 } else {
-                    showBtDevicesNotFoundWarning()
+                    showBtDisabledWarning()
                 }
             } else {
-                showBtDisabledWarning()
+                startInDebugMode()
+                initializeButtons()
             }
         } else {
-            startInDebugMode()
-            initializeButtons()
+            AppDialog.show(
+                context!!,
+                R.string.bluetooth_error_dialog_title,
+                R.string.bluetooth_error_dialog_message,
+                R.string.bluetooth_error_dialog_button_text,
+                DialogInterface.OnClickListener { dialog, _ ->
+                    dialog.cancel()
+                    activity!!.finish()
+                }
+            )
         }
+    }
+
+    private fun bluetoothIsEnabled(): Boolean {
+        return btAdapter!!.isEnabled
     }
 
     @SuppressLint("SetTextI18n")
