@@ -41,37 +41,37 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
         if (bluetoothIsEnabled()) {
             @Suppress("ConstantConditionIf")
             if (BuildConfig.API_IMPL == "DEVICE_BT") {
-                if (btIsEnabled()) {
-                    val btDevices = getBtDevices()
-                    if (btDevices.isNotEmpty()) {
-                        btMonitor = DeviceBtMonitor(this)
-                        showDevicesList(btDevices)
-                    } else {
-                        showBtDevicesNotFoundWarning()
-                    }
+                val btDevices = getBtDevices()
+                if (btDevices.isNotEmpty()) {
+                    btMonitor = DeviceBtMonitor(this)
+                    showDevicesList(btDevices)
                 } else {
-                    showBtDisabledWarning()
+                    showBtDevicesNotFoundWarning()
                 }
             } else {
                 startInDebugMode()
                 initializeButtons()
             }
         } else {
-            AppDialog.show(
-                context!!,
-                R.string.bluetooth_error_dialog_title,
-                R.string.bluetooth_error_dialog_message,
-                R.string.bluetooth_error_dialog_button_text,
-                DialogInterface.OnClickListener { dialog, _ ->
-                    dialog.cancel()
-                    activity!!.finish()
-                }
-            )
+            showBluetoothErrorDialog()
         }
     }
 
     private fun bluetoothIsEnabled(): Boolean {
         return btAdapter!!.isEnabled
+    }
+
+    private fun showBluetoothErrorDialog() {
+        AppDialog.show(
+            context!!,
+            R.string.bluetooth_error_dialog_title,
+            R.string.bluetooth_error_dialog_message,
+            R.string.bluetooth_error_dialog_button_text,
+            DialogInterface.OnClickListener { dialog, _ ->
+                dialog.cancel()
+                activity!!.finish()
+            }
+        )
     }
 
     @SuppressLint("SetTextI18n")
@@ -91,8 +91,6 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
             }
         }.start()
     }
-
-    private fun btIsEnabled() = true
 
     private fun showDevicesList(btDevices: List<BtDevice>) {
         val devicesBottomSheet = BtDevicesBottomSheet()
@@ -178,18 +176,6 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
 
     private fun setDeviceName(name: String) {
         tv_connected_device_info.text = name
-    }
-
-    private fun showBtDisabledWarning() {
-        AppDialog.show(
-            context!!,
-            R.string.title_warning,
-            R.string.message_bt_is_disabled,
-            R.string.action_exit,
-            DialogInterface.OnClickListener { _, _ ->
-                activity!!.finish()
-            }
-        )
     }
 
     private fun showBtDevicesNotFoundWarning() {
