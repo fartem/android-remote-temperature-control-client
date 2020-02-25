@@ -20,6 +20,8 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew detekt
-  - ./gradlew cpdCheck
-  - ./gradlew test
+  - ./gradlew build
+  - ./gradlew jacocoTestDebugbtDebugUnitTestReport
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
