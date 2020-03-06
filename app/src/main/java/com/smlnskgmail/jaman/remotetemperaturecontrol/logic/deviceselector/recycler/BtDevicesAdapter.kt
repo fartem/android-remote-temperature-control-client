@@ -13,7 +13,10 @@ class BtDevicesAdapter(
     private var selectedDeviceMacAddress: String = ""
     private var selectedDeviceName: String = ""
 
-    override fun onBindViewHolder(holderBt: BtDeviceHolder, position: Int) {
+    override fun onBindViewHolder(
+        holderBt: BtDeviceHolder,
+        position: Int
+    ) {
         holderBt.bind(btDevices[position])
     }
 
@@ -32,8 +35,10 @@ class BtDevicesAdapter(
 
     fun getSelectedDeviceMacAddress() = selectedDeviceMacAddress
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        BtDeviceHolder(
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ) = BtDeviceHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_bt_device, parent, false),
             this

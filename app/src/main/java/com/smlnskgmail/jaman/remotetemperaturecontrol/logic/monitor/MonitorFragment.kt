@@ -26,7 +26,7 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.settings.SettingsBot
 import kotlinx.android.synthetic.main.fragment_monitor.*
 
 @SuppressWarnings("TooManyFunctions")
-class MonitorFragment : BaseFragment(), BtMonitorTarget {
+class MonitorFragment : BaseFragment(), BtMonitorTarget, BtDisconnectTarget {
 
     private var monitorBtConnection: BtConnection? = null
     private var btAdapter: BluetoothAdapter? = null
@@ -201,13 +201,11 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget {
 
     private fun showSettings() {
         val settingsBottomSheet = SettingsBottomSheet()
-        settingsBottomSheet.setBtDisconnectListener(object : BtDisconnectTarget {
-            override fun btDisconnect() {
-                monitorBtConnection!!.disconnect()
-                resetRequired()
-            }
-        })
         showBottomSheet(settingsBottomSheet)
+    }
+    override fun btDisconnect() {
+        monitorBtConnection!!.disconnect()
+        resetRequired()
     }
 
     override fun btOnPause() {

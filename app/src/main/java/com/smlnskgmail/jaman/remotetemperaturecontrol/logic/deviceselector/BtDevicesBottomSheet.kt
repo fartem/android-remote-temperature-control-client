@@ -32,7 +32,9 @@ class BtDevicesBottomSheet : BaseBottomSheet() {
         this.btDevices.addAll(btDevices)
     }
 
-    fun setBtDeviceSelectCallback(btConnectTarget: BtConnectTarget) {
+    fun setBtDeviceSelectCallback(
+        btConnectTarget: BtConnectTarget
+    ) {
         this.btConnectTarget = btConnectTarget
     }
 

@@ -99,7 +99,9 @@ class DebugBtConnection(
         )
     }
 
-    override fun send(btMonitorSignalType: BtMonitorSignalType) {
+    override fun send(
+        btMonitorSignalType: BtMonitorSignalType
+    ) {
         writeLog(
             "Debug Monitor: send(${btMonitorSignalType})"
         )
