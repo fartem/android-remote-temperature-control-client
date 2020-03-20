@@ -7,6 +7,12 @@ import org.junit.Test
 
 class MonitorDataExtractorTest {
 
+    companion object {
+
+        private const val defaultCleanResult = "25.5"
+
+    }
+
     @Test
     fun validateTemperatureParse() {
         checkValidation(
@@ -59,7 +65,7 @@ class MonitorDataExtractorTest {
 
     private fun checkValidation(
         btMonitorSignalType: BtMonitorSignalType,
-        cleanResult: String = DEFAULT_CLEAN_RESULT
+        cleanResult: String = defaultCleanResult
     ) {
         val rawData = rawData(
             DeviceBtDataExtractor.signalOf(
@@ -86,12 +92,6 @@ class MonitorDataExtractorTest {
         cleanResult: String
     ): String {
         return String.format("%s%s", signalType, cleanResult)
-    }
-
-    companion object {
-
-        private const val DEFAULT_CLEAN_RESULT = "25.5"
-
     }
 
 }

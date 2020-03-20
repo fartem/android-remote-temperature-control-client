@@ -8,6 +8,12 @@ import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entities
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+
+        private const val currentFragmentTag = "current_fragment"
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         showFragment(MonitorFragment())
@@ -15,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, fragment, CURRENT_FRAGMENT_TAG)
+            .add(android.R.id.content, fragment, currentFragmentTag)
             .addToBackStack(null)
             .commit()
     }
@@ -27,17 +33,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleOnPause() {
         val currentFragment = supportFragmentManager.findFragmentByTag(
-            CURRENT_FRAGMENT_TAG
+            currentFragmentTag
         )
         if (currentFragment != null && currentFragment is BtPauseTarget) {
             currentFragment.btOnPause()
         }
-    }
-
-    companion object {
-
-        private const val CURRENT_FRAGMENT_TAG = "current_fragment"
-
     }
 
 }

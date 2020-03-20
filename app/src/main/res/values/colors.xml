@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Configured palette: https://www.materialpalette.com/amber/light-blue-->
-    <color name="colorPrimary">#ffc107</color>
-    <color name="colorPrimaryDark">#ffa000</color>
-    <color name="colorAccent">#03a9f4</color>
-    <color name="ic_launcher_background">#03A9F4</color>
+    <color name="colorPrimary">#4db6ac</color>
+    <color name="colorPrimaryDark">#00867d</color>
+    <color name="colorAccent">#64b5f6</color>
+    <color name="colorLauncherBackground">#4DB6AC</color>
 
     <!-- Text -->
     <color name="colorPrimaryText">#212121</color>
