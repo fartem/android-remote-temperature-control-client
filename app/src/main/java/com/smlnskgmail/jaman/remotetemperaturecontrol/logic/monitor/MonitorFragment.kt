@@ -58,7 +58,11 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget, BtDisconnectTarget {
     }
 
     private fun bluetoothIsEnabled(): Boolean {
-        return btAdapter!!.isEnabled
+        return if (btAdapter != null) {
+            btAdapter!!.isEnabled
+        } else {
+            false
+        }
     }
 
     private fun showBluetoothErrorDialog() {
