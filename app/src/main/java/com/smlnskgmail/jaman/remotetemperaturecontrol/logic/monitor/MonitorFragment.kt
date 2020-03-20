@@ -41,12 +41,16 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget, BtDisconnectTarget {
 
         @Suppress("ConstantConditionIf")
         if (BuildConfig.API_IMPL == "DEVICE_BT") {
-            val btDevices = getBtDevices()
-            if (btDevices.isNotEmpty()) {
-                btMonitor = DeviceBtMonitor(this)
-                showDevicesList(btDevices)
+            if (bluetoothIsEnabled()) {
+                val btDevices = getBtDevices()
+                if (btDevices.isNotEmpty()) {
+                    btMonitor = DeviceBtMonitor(this)
+                    showDevicesList(btDevices)
+                } else {
+                    showBtDevicesNotFoundWarning()
+                }
             } else {
-                showBtDevicesNotFoundWarning()
+                showBluetoothErrorDialog()
             }
         } else {
             startInDebugMode()
