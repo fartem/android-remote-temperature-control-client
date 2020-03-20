@@ -38,22 +38,19 @@ class MonitorFragment : BaseFragment(), BtMonitorTarget, BtDisconnectTarget {
         savedInstanceState: Bundle?
     ) {
         btAdapter = BluetoothAdapter.getDefaultAdapter()
-        if (bluetoothIsEnabled()) {
-            @Suppress("ConstantConditionIf")
-            if (BuildConfig.API_IMPL == "DEVICE_BT") {
-                val btDevices = getBtDevices()
-                if (btDevices.isNotEmpty()) {
-                    btMonitor = DeviceBtMonitor(this)
-                    showDevicesList(btDevices)
-                } else {
-                    showBtDevicesNotFoundWarning()
-                }
+
+        @Suppress("ConstantConditionIf")
+        if (BuildConfig.API_IMPL == "DEVICE_BT") {
+            val btDevices = getBtDevices()
+            if (btDevices.isNotEmpty()) {
+                btMonitor = DeviceBtMonitor(this)
+                showDevicesList(btDevices)
             } else {
-                startInDebugMode()
-                initializeButtons()
+                showBtDevicesNotFoundWarning()
             }
         } else {
-            showBluetoothErrorDialog()
+            startInDebugMode()
+            initializeButtons()
         }
     }
 
