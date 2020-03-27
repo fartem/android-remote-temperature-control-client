@@ -5,6 +5,7 @@ Android Remote Temperature Control Client
 
 [![Travis CI](https://img.shields.io/travis/fartem/android-remote-temperature-control-client)](https://travis-ci.org/fartem/android-remote-temperature-control-client)
 [![Codecov](https://img.shields.io/codecov/c/github/fartem/android-remote-temperature-control-client)](https://codecov.io/gh/fartem/android-remote-temperature-control-client)
+[![Hits-of-Code](https://hitsofcode.com/github/fartem/android-remote-temperature-control-client)](https://hitsofcode.com/view/github/fartem/android-remote-temperature-control-client)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20Home%20Control%20Client-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/7943)
 
 About
