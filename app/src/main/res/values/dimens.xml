@@ -11,4 +11,6 @@
     <dimen name="text_size_standard">16sp</dimen>
     <dimen name="text_size_medium">18sp</dimen>
     <dimen name="text_size_large">24sp</dimen>
+
+    <dimen name="radius_bottom_sheet">12dp</dimen>
 </resources>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.smlnskgmail.jaman.remotetemperaturecontrol.R
 
 abstract class BaseBottomSheet : BottomSheetDialogFragment() {
 
@@ -28,5 +29,9 @@ abstract class BaseBottomSheet : BottomSheetDialogFragment() {
     )
 
     abstract fun getLayoutResId(): Int
+
+    override fun getTheme(): Int {
+        return R.style.AppBottomSheetStyle
+    }
 
 }
