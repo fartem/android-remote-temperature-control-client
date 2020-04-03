@@ -19,11 +19,10 @@ How to run
 
 __With Arduino module__
 
-Install `devicebt` app flavor and:
-
 1. run [Arduino module](https://github.com/fartem/arduino-temperature-control);
 2. pair your Android device and Arduino Bluetooth module from a device settings;
-3. run Android application and select Arduino Bluetooth module from devices list.
+3. install `devicebt` app flavor;
+4. run app and select Arduino Bluetooth module from devices list.
 
 __Debug__
 
