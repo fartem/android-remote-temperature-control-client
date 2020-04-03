@@ -14,12 +14,20 @@ About
 
 Remote client for [Arduino temperature project](https://github.com/fartem/arduino-temperature-control).
 
-Before start
+How to run
 -------------
 
-1. install and run [Arduino module](https://github.com/fartem/arduino-temperature-control);
-2. pair your Android device and Arduino Bluetooth module;
-3. install and run Android application and select Arduino Bluetooth module from devices list.
+__With Arduino module__
+
+Install `devicebt` app flavor.
+
+1. run [Arduino module](https://github.com/fartem/arduino-temperature-control);
+2. pair your Android device and Arduino Bluetooth module from a device settings;
+3. run Android application and select Arduino Bluetooth module from devices list.
+
+__Debug__
+
+Install `debugbt` app flavor.
 
 Download
 -------------
