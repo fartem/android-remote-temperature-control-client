@@ -2,7 +2,6 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.MonitorFragment
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.entities.targets.BtPauseTarget
 
