@@ -16,12 +16,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        showFragment(MonitorFragment())
+        showMonitorFragment()
     }
 
-    private fun showFragment(fragment: Fragment) {
+    private fun showMonitorFragment() {
         supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, fragment, currentFragmentTag)
+            .add(
+                android.R.id.content,
+                MonitorFragment(),
+                currentFragmentTag
+            )
             .addToBackStack(null)
             .commit()
     }

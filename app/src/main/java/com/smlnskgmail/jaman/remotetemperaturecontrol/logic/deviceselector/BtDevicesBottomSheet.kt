@@ -13,10 +13,9 @@ class BtDevicesBottomSheet : BaseBottomSheet() {
     private val btDevices = mutableListOf<BtDevice>()
 
     override fun initialize() {
-        devices.adapter =
-            BtDevicesAdapter(
-                btDevices
-            )
+        devices.adapter = BtDevicesAdapter(
+            btDevices
+        )
         select_device.setOnClickListener {
             val adapter = devices.adapter as BtDevicesAdapter
             btConnectTarget?.onBtDeviceSelected(

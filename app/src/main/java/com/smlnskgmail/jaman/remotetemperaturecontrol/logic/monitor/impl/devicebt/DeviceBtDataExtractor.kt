@@ -1,6 +1,6 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.impl.devicebt
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitorSignalType
 
 object DeviceBtDataExtractor {
 

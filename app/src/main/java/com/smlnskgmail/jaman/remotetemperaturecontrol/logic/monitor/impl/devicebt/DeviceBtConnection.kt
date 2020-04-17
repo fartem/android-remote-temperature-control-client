@@ -2,9 +2,9 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.impl.device
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtConnection
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitor
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.connection.BtConnection
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitorSignalType
 import java.io.InputStream
 import java.io.OutputStream
 import java.util.*

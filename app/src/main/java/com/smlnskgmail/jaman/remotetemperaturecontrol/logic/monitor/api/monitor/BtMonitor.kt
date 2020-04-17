@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api
+package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor
 
 interface BtMonitor {
 

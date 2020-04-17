@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.remotetemperaturecontrol.api
 
 import com.smlnskgmail.jaman.remotetemperaturecontrol.api.fakemonitor.FakeMonitor
 import com.smlnskgmail.jaman.remotetemperaturecontrol.api.fakemonitor.FakeMonitorHandleTarget
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitorSignalType
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -36,6 +36,13 @@ class MonitorDataSendTest {
             validResult
         )
         checkOutput(validResult)
+    }
+
+    private fun checkOutput(validOutput: String) {
+        assertEquals(
+            validOutput,
+            outputStream.toString()
+        )
     }
 
     @Test
@@ -111,13 +118,6 @@ class MonitorDataSendTest {
         signalTarget.onNewDataAvailable(
             btMonitorSignalType,
             data
-        )
-    }
-
-    private fun checkOutput(validOutput: String) {
-        assertEquals(
-            validOutput,
-            outputStream.toString()
         )
     }
 

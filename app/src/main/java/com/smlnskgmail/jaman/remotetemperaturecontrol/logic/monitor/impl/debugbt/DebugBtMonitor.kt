@@ -1,8 +1,8 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.impl.debugbt
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitor
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorTarget
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitor
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitorTarget
 
 class DebugBtMonitor(
     private val btMonitorTarget: BtMonitorTarget

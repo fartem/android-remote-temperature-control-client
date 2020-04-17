@@ -14,12 +14,20 @@ class BtDeviceHolder(
         itemView.bt_device_name.text = btDevice.name
         validateSelectedStatus(btDevice.isSelected)
         itemView.setOnClickListener {
-            recyclerAdapterBt.selectDevice(btDevice)
+            recyclerAdapterBt.selectDevice(
+                btDevice
+            )
         }
     }
 
-    private fun validateSelectedStatus(isSelected: Boolean) {
-        itemView.bt_device_status.visibility = if (isSelected) View.VISIBLE else View.INVISIBLE
+    private fun validateSelectedStatus(
+        isSelected: Boolean
+    ) {
+        itemView.bt_device_status.visibility = if (isSelected) {
+            View.VISIBLE
+        } else {
+            View.INVISIBLE
+        }
     }
 
 }

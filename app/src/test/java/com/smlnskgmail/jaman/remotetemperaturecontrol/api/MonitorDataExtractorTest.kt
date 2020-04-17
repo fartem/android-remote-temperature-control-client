@@ -1,6 +1,6 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol.api
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.BtMonitorSignalType
+import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.api.monitor.BtMonitorSignalType
 import com.smlnskgmail.jaman.remotetemperaturecontrol.logic.monitor.impl.devicebt.DeviceBtDataExtractor
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -9,7 +9,7 @@ class MonitorDataExtractorTest {
 
     companion object {
 
-        private const val defaultCleanResult = "25.5"
+        private const val defaultResult = "25.5"
 
     }
 
@@ -17,6 +17,41 @@ class MonitorDataExtractorTest {
     fun validateTemperatureParse() {
         checkValidation(
             BtMonitorSignalType.Temperature
+        )
+    }
+
+    private fun checkValidation(
+        btMonitorSignalType: BtMonitorSignalType,
+        result: String = defaultResult
+    ) {
+        val rawData = rawData(
+            DeviceBtDataExtractor.signalOf(
+                btMonitorSignalType
+            ),
+            result
+        )
+
+        val parsedSignalType = DeviceBtDataExtractor.signalType(rawData)
+        assertEquals(
+            parsedSignalType,
+            btMonitorSignalType
+        )
+
+        val parsedData = DeviceBtDataExtractor.data(rawData)
+        assertEquals(
+            parsedData,
+            result
+        )
+    }
+
+    private fun rawData(
+        signalType: String,
+        result: String
+    ): String {
+        return String.format(
+            "%s%s",
+            signalType,
+            result
         )
     }
 
@@ -63,35 +98,12 @@ class MonitorDataExtractorTest {
         )
     }
 
-    private fun checkValidation(
-        btMonitorSignalType: BtMonitorSignalType,
-        cleanResult: String = defaultCleanResult
-    ) {
-        val rawData = rawData(
-            DeviceBtDataExtractor.signalOf(
-                btMonitorSignalType
-            ),
-            cleanResult
+    @Test
+    fun validateOther() {
+        checkValidation(
+            BtMonitorSignalType.Other,
+            ""
         )
-
-        val parsedSignalType = DeviceBtDataExtractor.signalType(rawData)
-        assertEquals(
-            parsedSignalType,
-            btMonitorSignalType
-        )
-
-        val parsedData = DeviceBtDataExtractor.data(rawData)
-        assertEquals(
-            parsedData,
-            cleanResult
-        )
-    }
-
-    private fun rawData(
-        signalType: String,
-        cleanResult: String
-    ): String {
-        return String.format("%s%s", signalType, cleanResult)
     }
 
 }
