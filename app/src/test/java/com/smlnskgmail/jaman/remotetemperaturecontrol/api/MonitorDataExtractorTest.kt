@@ -108,7 +108,7 @@ class MonitorDataExtractorTest {
         assertEquals(
             BtMonitorSignalType.Other,
             DeviceBtDataExtractor.signalType(
-                ""
+                "k"
             )
         )
     }
