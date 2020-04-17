@@ -24,7 +24,7 @@ __With Arduino module__
 3. install `devicebt` app flavor;
 4. run app and select Arduino Bluetooth module from devices list.
 
-__Debug__
+__Without Arduino module__
 
 Install `debugbt` app flavor.
 
