@@ -1,8 +1,8 @@
 package com.smlnskgmail.jaman.remotetemperaturecontrol
 
-import com.smlnskgmail.jaman.remotetemperaturecontrol.api.BtDeviceTest
 import com.smlnskgmail.jaman.remotetemperaturecontrol.api.MonitorDataExtractorTest
 import com.smlnskgmail.jaman.remotetemperaturecontrol.api.MonitorDataSendTest
+import com.smlnskgmail.jaman.remotetemperaturecontrol.api.entities.BtDeviceTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
