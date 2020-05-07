@@ -29,10 +29,13 @@ android {
             buildConfigField 'String', 'API_IMPL', "\"DEBUG_BT\""
         }
     }
+
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def versionName = android.defaultConfig.versionName
-            output.outputFileName = "remote-monitor_${versionName}"
+            def productFlavorName = variant.flavorName
+            def buildTypeName = variant.buildType.name
+            output.outputFileName = "remote-monitor-${productFlavorName}-${buildTypeName}_${versionName}"
         }
     }
 }
