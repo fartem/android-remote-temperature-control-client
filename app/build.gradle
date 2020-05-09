@@ -35,7 +35,7 @@ android {
             def versionName = android.defaultConfig.versionName
             def productFlavorName = variant.flavorName
             def buildTypeName = variant.buildType.name
-            output.outputFileName = "remote-monitor-${productFlavorName}-${buildTypeName}_${versionName}"
+            output.outputFileName = "remote-monitor-${productFlavorName}-${buildTypeName}_${versionName}.apk"
         }
     }
 }
