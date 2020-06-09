@@ -4,7 +4,7 @@
     <color name="colorPrimary">#26a69a</color>
     <color name="colorPrimaryDark">#00766c</color>
     <color name="colorAccent">#64b5f6</color>
-    <color name="colorLauncherBackground">#26a69a</color>
+    <color name="colorLauncherBackground">#64b5f6</color>
 
     <!-- Text -->
     <color name="colorPrimaryText">#212121</color>
