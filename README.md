@@ -24,10 +24,6 @@ __Without Arduino module__
 
 Install `debugbt` app flavor.
 
-## Download
-
-<img src="media/qrcodes/github_download.png" height="150px" />
-
 ## Screenshots
 
 <br/>
@@ -35,6 +31,14 @@ Install `debugbt` app flavor.
   <img src="media/screenshots/screenshot_01.png" width="190" />
   <img src="media/screenshots/screenshot_02.png" width="190" />
 </p>
+
+## Download
+
+<img src="media/qrcodes/github_download.png" height="150px" />
+
+## Download
+
+<img src="media/qrcodes/github_download.png" height="150px" />
 
 ## How to contribute
 
